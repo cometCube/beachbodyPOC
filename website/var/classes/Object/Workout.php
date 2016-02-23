@@ -1,6 +1,6 @@
 <?php 
 
-/** Generated at 2016-02-23T05:34:21+01:00 */
+/** Generated at 2016-02-23T14:18:06+01:00 */
 
 /**
 * Class for Workout.
@@ -167,7 +167,7 @@ public function setRecequipment ($recequipment) {
 
 /**
 * Get wtime - Time Duration of Workout
-* @return string
+* @return float
 */
 public function getWtime () {
 	$preValue = $this->preGetValue("wtime"); 
@@ -180,7 +180,7 @@ public function getWtime () {
 
 /**
 * Set wtime - Time Duration of Workout
-* @param string $wtime
+* @param float $wtime
 * @return \Pimcore\Model\Object\Workout
 */
 public function setWtime ($wtime) {
