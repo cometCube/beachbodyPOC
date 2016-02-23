@@ -1,6 +1,6 @@
 <?php 
 
-/** Generated at 2016-02-23T14:18:06+01:00 */
+/** Generated at 2016-02-23T14:30:11+01:00 */
 
 /**
 * Class for Workout.
