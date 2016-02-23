@@ -1,6 +1,6 @@
 <?php 
 
-/** Generated at 2016-02-23T06:32:13+01:00 */
+/** Generated at 2016-02-23T11:33:47+01:00 */
 
 /**
 * Inheritance: no
@@ -15,26 +15,30 @@ namespace Pimcore\Model\Object;
 
 
 /**
-* @method static \Pimcore\Model\Object\Program getByPdesc ($value, $limit = 0) 
-* @method static \Pimcore\Model\Object\Program getByPtype ($value, $limit = 0) 
-* @method static \Pimcore\Model\Object\Program getByPfeatures ($value, $limit = 0) 
-* @method static \Pimcore\Model\Object\Program getByPactive ($value, $limit = 0) 
 * @method static \Pimcore\Model\Object\Program getByTrainerID ($value, $limit = 0) 
 * @method static \Pimcore\Model\Object\Program getByPname ($value, $limit = 0) 
+* @method static \Pimcore\Model\Object\Program getByPdesc ($value, $limit = 0) 
 * @method static \Pimcore\Model\Object\Program getByPimage ($value, $limit = 0) 
+* @method static \Pimcore\Model\Object\Program getByFimage ($value, $limit = 0) 
+* @method static \Pimcore\Model\Object\Program getByPtype ($value, $limit = 0) 
+* @method static \Pimcore\Model\Object\Program getByFtimelabel ($value, $limit = 0) 
+* @method static \Pimcore\Model\Object\Program getByFexpertlevel ($value, $limit = 0) 
+* @method static \Pimcore\Model\Object\Program getByPactive ($value, $limit = 0) 
 */
 
 class Program extends Concrete {
 
 public $o_classId = 2;
 public $o_className = "program";
-public $pdesc;
-public $ptype;
-public $pfeatures;
-public $pactive;
 public $trainerID;
 public $pname;
+public $pdesc;
 public $pimage;
+public $fimage;
+public $ptype;
+public $ftimelabel;
+public $fexpertlevel;
+public $pactive;
 
 
 /**
@@ -45,98 +49,6 @@ public static function create($values = array()) {
 	$object = new static();
 	$object->setValues($values);
 	return $object;
-}
-
-/**
-* Get pdesc - Program Description
-* @return string
-*/
-public function getPdesc () {
-	$preValue = $this->preGetValue("pdesc"); 
-	if($preValue !== null && !\Pimcore::inAdmin()) { 
-		return $preValue;
-	}
-	$data = $this->pdesc;
-	return $data;
-}
-
-/**
-* Set pdesc - Program Description
-* @param string $pdesc
-* @return \Pimcore\Model\Object\Program
-*/
-public function setPdesc ($pdesc) {
-	$this->pdesc = $pdesc;
-	return $this;
-}
-
-/**
-* Get ptype - Program Type
-* @return string
-*/
-public function getPtype () {
-	$preValue = $this->preGetValue("ptype"); 
-	if($preValue !== null && !\Pimcore::inAdmin()) { 
-		return $preValue;
-	}
-	$data = $this->ptype;
-	return $data;
-}
-
-/**
-* Set ptype - Program Type
-* @param string $ptype
-* @return \Pimcore\Model\Object\Program
-*/
-public function setPtype ($ptype) {
-	$this->ptype = $ptype;
-	return $this;
-}
-
-/**
-* Get pfeatures - Program Features
-* @return string
-*/
-public function getPfeatures () {
-	$preValue = $this->preGetValue("pfeatures"); 
-	if($preValue !== null && !\Pimcore::inAdmin()) { 
-		return $preValue;
-	}
-	$data = $this->pfeatures;
-	return $data;
-}
-
-/**
-* Set pfeatures - Program Features
-* @param string $pfeatures
-* @return \Pimcore\Model\Object\Program
-*/
-public function setPfeatures ($pfeatures) {
-	$this->pfeatures = $pfeatures;
-	return $this;
-}
-
-/**
-* Get pactive - Program Active
-* @return boolean
-*/
-public function getPactive () {
-	$preValue = $this->preGetValue("pactive"); 
-	if($preValue !== null && !\Pimcore::inAdmin()) { 
-		return $preValue;
-	}
-	$data = $this->pactive;
-	return $data;
-}
-
-/**
-* Set pactive - Program Active
-* @param boolean $pactive
-* @return \Pimcore\Model\Object\Program
-*/
-public function setPactive ($pactive) {
-	$this->pactive = $pactive;
-	return $this;
 }
 
 /**
@@ -186,6 +98,29 @@ public function setPname ($pname) {
 }
 
 /**
+* Get pdesc - Program Description
+* @return string
+*/
+public function getPdesc () {
+	$preValue = $this->preGetValue("pdesc"); 
+	if($preValue !== null && !\Pimcore::inAdmin()) { 
+		return $preValue;
+	}
+	$data = $this->pdesc;
+	return $data;
+}
+
+/**
+* Set pdesc - Program Description
+* @param string $pdesc
+* @return \Pimcore\Model\Object\Program
+*/
+public function setPdesc ($pdesc) {
+	$this->pdesc = $pdesc;
+	return $this;
+}
+
+/**
 * Get pimage - Program Image
 * @return \Pimcore\Model\Asset\Image
 */
@@ -205,6 +140,121 @@ public function getPimage () {
 */
 public function setPimage ($pimage) {
 	$this->pimage = $pimage;
+	return $this;
+}
+
+/**
+* Get fimage - Program Feature Image
+* @return \Pimcore\Model\Asset\Image
+*/
+public function getFimage () {
+	$preValue = $this->preGetValue("fimage"); 
+	if($preValue !== null && !\Pimcore::inAdmin()) { 
+		return $preValue;
+	}
+	$data = $this->fimage;
+	return $data;
+}
+
+/**
+* Set fimage - Program Feature Image
+* @param \Pimcore\Model\Asset\Image $fimage
+* @return \Pimcore\Model\Object\Program
+*/
+public function setFimage ($fimage) {
+	$this->fimage = $fimage;
+	return $this;
+}
+
+/**
+* Get ptype - Program Type
+* @return string
+*/
+public function getPtype () {
+	$preValue = $this->preGetValue("ptype"); 
+	if($preValue !== null && !\Pimcore::inAdmin()) { 
+		return $preValue;
+	}
+	$data = $this->ptype;
+	return $data;
+}
+
+/**
+* Set ptype - Program Type
+* @param string $ptype
+* @return \Pimcore\Model\Object\Program
+*/
+public function setPtype ($ptype) {
+	$this->ptype = $ptype;
+	return $this;
+}
+
+/**
+* Get ftimelabel - Program Feature Time Info
+* @return string
+*/
+public function getFtimelabel () {
+	$preValue = $this->preGetValue("ftimelabel"); 
+	if($preValue !== null && !\Pimcore::inAdmin()) { 
+		return $preValue;
+	}
+	$data = $this->ftimelabel;
+	return $data;
+}
+
+/**
+* Set ftimelabel - Program Feature Time Info
+* @param string $ftimelabel
+* @return \Pimcore\Model\Object\Program
+*/
+public function setFtimelabel ($ftimelabel) {
+	$this->ftimelabel = $ftimelabel;
+	return $this;
+}
+
+/**
+* Get fexpertlevel - Program Expertisation Level
+* @return string
+*/
+public function getFexpertlevel () {
+	$preValue = $this->preGetValue("fexpertlevel"); 
+	if($preValue !== null && !\Pimcore::inAdmin()) { 
+		return $preValue;
+	}
+	$data = $this->fexpertlevel;
+	return $data;
+}
+
+/**
+* Set fexpertlevel - Program Expertisation Level
+* @param string $fexpertlevel
+* @return \Pimcore\Model\Object\Program
+*/
+public function setFexpertlevel ($fexpertlevel) {
+	$this->fexpertlevel = $fexpertlevel;
+	return $this;
+}
+
+/**
+* Get pactive - Program Active
+* @return boolean
+*/
+public function getPactive () {
+	$preValue = $this->preGetValue("pactive"); 
+	if($preValue !== null && !\Pimcore::inAdmin()) { 
+		return $preValue;
+	}
+	$data = $this->pactive;
+	return $data;
+}
+
+/**
+* Set pactive - Program Active
+* @param boolean $pactive
+* @return \Pimcore\Model\Object\Program
+*/
+public function setPactive ($pactive) {
+	$this->pactive = $pactive;
 	return $this;
 }
 
