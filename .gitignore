@@ -1,0 +1,3 @@
+website/var/log/*
+website/var/system/*.sql
+website/var/tmp/*
