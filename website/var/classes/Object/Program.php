@@ -1,6 +1,6 @@
 <?php 
 
-/** Generated at 2016-02-23T11:33:47+01:00 */
+/** Generated at 2016-02-24T14:42:42+01:00 */
 
 /**
 * Inheritance: no
@@ -23,6 +23,7 @@ namespace Pimcore\Model\Object;
 * @method static \Pimcore\Model\Object\Program getByPtype ($value, $limit = 0) 
 * @method static \Pimcore\Model\Object\Program getByFtimelabel ($value, $limit = 0) 
 * @method static \Pimcore\Model\Object\Program getByFexpertlevel ($value, $limit = 0) 
+* @method static \Pimcore\Model\Object\Program getByIspremium ($value, $limit = 0) 
 * @method static \Pimcore\Model\Object\Program getByPactive ($value, $limit = 0) 
 */
 
@@ -38,6 +39,7 @@ public $fimage;
 public $ptype;
 public $ftimelabel;
 public $fexpertlevel;
+public $ispremium;
 public $pactive;
 
 
@@ -232,6 +234,29 @@ public function getFexpertlevel () {
 */
 public function setFexpertlevel ($fexpertlevel) {
 	$this->fexpertlevel = $fexpertlevel;
+	return $this;
+}
+
+/**
+* Get ispremium - Premium Program
+* @return boolean
+*/
+public function getIspremium () {
+	$preValue = $this->preGetValue("ispremium"); 
+	if($preValue !== null && !\Pimcore::inAdmin()) { 
+		return $preValue;
+	}
+	$data = $this->ispremium;
+	return $data;
+}
+
+/**
+* Set ispremium - Premium Program
+* @param boolean $ispremium
+* @return \Pimcore\Model\Object\Program
+*/
+public function setIspremium ($ispremium) {
+	$this->ispremium = $ispremium;
 	return $this;
 }
 

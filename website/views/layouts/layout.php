@@ -1,4 +1,6 @@
 <?php
+$normalPrograms = $this->normalPrograms;
+$premiumPrograms = $this->premiumPrograms;
 $trainers = $this->trainers;
 ?>
 <!DOCTYPE html>
@@ -30,7 +32,7 @@ $trainers = $this->trainers;
    <style type="text/css">.tk-proxima-nova{font-family:"proxima-nova",sans-serif;}.tk-proxima-nova-alt{font-family:"proxima-nova-alt",sans-serif;}</style><link rel="stylesheet" href="/website/static/l" media="all"><script>try{Typekit.load();}catch(e){}</script>
 
   <link rel="stylesheet" type="text/css" href="/website/static/css/style.css">
-  <link rel="stylesheet" type="text/css" href="/website/static/css/style_v16.css">
+  <!-- <link rel="stylesheet" type="text/css" href="/website/static/css/style_v16.css"> -->
 <script src="chrome-extension://pkedcjkdefgpdelpbcmbmeomcjbeemfm/cast_sender.js"></script><script src="chrome-extension://fjhoaacokmgbjemoflkofnenfaiekifl/cast_sender.js"></script><script type="text/javascript" async="" charset="utf-8" src="/website/static/js/utag.1.js" id="utag_beachbody.bod-dom_1"></script><script type="text/javascript" async="" charset="utf-8" src="/website/static/js/utag.4.js" id="utag_beachbody.bod-dom_4"></script><script type="text/javascript" async="" charset="utf-8" src="/website/static/js/utag.5.js" id="utag_beachbody.bod-dom_5"></script><script src="/website/static/js/chartbeat.js"></script><script src="/website/static/js/jquery.mousewheel.min.js"></script><style type="text/css" media="print">.usabilla_live_button_container { display: none; }</style></head>
 
 <body class="homepage common-version"><div id="lightningjs-usabilla_live" style="display: none;"><div><iframe frameborder="0" id="lightningjs-frame-usabilla_live"></iframe></div></div>
@@ -515,7 +517,7 @@ window.bbLoaders.push(function() {
         <div class="cdj-module">
                                 <a href="http://club.teambeachbody.com/video/MHC20305D04?15+Min+Leg+Hammer&amp;program=The+Master%27s+Hammer+and+Chisel&amp;content_type=challenge-du-jour" class="video-modal-btn" data-title="15 Min Leg Hammer" data-description="15 minutes is all you need to fire up your quads, hamstrings, glutes, and calves for maximum strength and power." data-program="The Master&#39;s Hammer and Chisel" data-duration="20m">
                               <div class="cdj-module-bg">
-                    <img alt="Challenge Du Jour" src="/website/static/cdj_default.png">
+                    <img alt="Challenge Du Jour" src="http://imgclub.teambeachbody.com/club-teambeachbody/image/upload/c_scale,h_223,w_569/web/cdj_default.png">
                 </div>
                 <div class="cdj-module-info">
                     <strong>02.23</strong>
@@ -584,19 +586,24 @@ window.bbLoaders[window.bbLoaders.length] = function() {
   </a>
 
   <div class="slider-box loaded">
-    <div class="bx-wrapper" style="max-width: 1170px; margin: 0px auto;"><div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative; height: 336px;"><ul class="bxslider drawer-slider slider-cards" id="all_programs" style="width: 3315%; position: relative; transition-duration: 0s; transform: translate3d(-40px, 0px, 0px);">
-          <li class="drawer-item has-hovered-data" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-        <img class="img-card-responsive inited" data-src="//imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1441146337/TrainerExclusives/Autumn_BodExclusives_BoxArt.jpg" src="/website/static/Autumn_BodExclusives_BoxArt.jpg">
+    <div class="bx-wrapper" style="max-width: 1170px; margin: 0px auto;">
+    <div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative; height: 336px;">
+    <ul class="bxslider drawer-slider slider-cards" id="all_programs" style="width: 3315%; position: relative; transition-duration: 0s; transform: translate3d(-40px, 0px, 0px);">
+    <?php
+      foreach ($normalPrograms as $key => $value) {
+    ?>
+        <li class="drawer-item has-hovered-data" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
+        <img class="img-card-responsive inited" data-src="<?= $value->getPimage();?>" src="<?= $value->getPimage();?>">
                 <a href="http://club.teambeachbody.com/program/autumncalabreseexclusives"></a>
 
         <div class="metadata-box">
           <div class="metadata-cell">
             <a href="javascript:void(0);" class="btn-close-rollover-data"></a>
-            <span class="icon-type" style="background: none;"><img src="/website/static/SLIM-TONE_ICON.png" alt="Slim &amp; Tone"></span>
-            <p class="type">Slim &amp; Tone</p>
+            <span class="icon-type" style="background: none;"><img src="<?= $value->getFimage();?>" alt="<?= $value->getPtype();?>"></span>
+            <p class="type"><?= $value->getPtype();?></p>
             <span class="divider"></span>
-            <p class="general-info"><span class="icon-clock"></span>5-45 Minutes</p>
-            <p class="general-info">Beginner / Intermediate</p>
+            <p class="general-info"><span class="icon-clock"></span><?= $value->getFtimelabel();?></p>
+            <p class="general-info"><?= $value->getFexpertlevel();?></p>
             <span class="divider"></span>
             <p class="info"></p>
             <a href="http://club.teambeachbody.com/program/autumncalabreseexclusives" class="link">LET'S GET STARTED</a>
@@ -604,576 +611,9 @@ window.bbLoaders[window.bbLoaders.length] = function() {
         </div>
 
       </li>
-          <li class="drawer-item has-hovered-data" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-        <img class="img-card-responsive inited" data-src="//imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1441146337/TrainerExclusives/Tony_BodExclusives_BoxArt.jpg" src="/website/static/Tony_BodExclusives_BoxArt.jpg">
-                <a href="http://club.teambeachbody.com/program/tonyhortonexclusives"></a>
-
-        <div class="metadata-box">
-          <div class="metadata-cell">
-            <a href="javascript:void(0);" class="btn-close-rollover-data"></a>
-            <span class="icon-type" style="background: none;"><img src="/website/static/MUSCLE-BUILDING_ICON.png" alt="Muscle Building / Cardio"></span>
-            <p class="type">Muscle Building / Cardio</p>
-            <span class="divider"></span>
-            <p class="general-info"><span class="icon-clock"></span>5-45 Minutes</p>
-            <p class="general-info">Intermediate / Advanced</p>
-            <span class="divider"></span>
-            <p class="info"></p>
-            <a href="http://club.teambeachbody.com/program/tonyhortonexclusives" class="link">LET'S GET STARTED</a>
-          </div>
-        </div>
-
-      </li>
-          <li class="drawer-item has-hovered-data" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-        <img class="img-card-responsive inited" data-src="//imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1441146337/TrainerExclusives/Sagi_BodExclusives_BoxArt.jpg" src="/website/static/Sagi_BodExclusives_BoxArt.jpg">
-                <a href="http://club.teambeachbody.com/program/sagikalevexclusives"></a>
-
-        <div class="metadata-box">
-          <div class="metadata-cell">
-            <a href="javascript:void(0);" class="btn-close-rollover-data"></a>
-            <span class="icon-type" style="background: none;"><img src="/website/static/MUSCLE-BUILDING_ICON.png" alt="Muscle Building"></span>
-            <p class="type">Muscle Building</p>
-            <span class="divider"></span>
-            <p class="general-info"><span class="icon-clock"></span>5-45 Minutes</p>
-            <p class="general-info">Intermediate / Advanced</p>
-            <span class="divider"></span>
-            <p class="info"></p>
-            <a href="http://club.teambeachbody.com/program/sagikalevexclusives" class="link">LET'S GET STARTED</a>
-          </div>
-        </div>
-
-      </li>
-          <li class="drawer-item has-hovered-data" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-        <img class="img-card-responsive inited" data-src="//imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1453241522/Jericho/BODExclusives_BoxArt_Jericho_20160119.jpg" src="/website/static/BODExclusives_BoxArt_Jericho_20160119.jpg">
-                <a href="http://club.teambeachbody.com/program/JerichoMcMatthewsExclusives"></a>
-
-        <div class="metadata-box">
-          <div class="metadata-cell">
-            <a href="javascript:void(0);" class="btn-close-rollover-data"></a>
-            <span class="icon-type" style="background: none;"><img src="/website/static/CARDIO_ICON.png" alt="Cardio &amp; Yoga"></span>
-            <p class="type">Cardio &amp; Yoga</p>
-            <span class="divider"></span>
-            <p class="general-info"><span class="icon-clock"></span>20-40 Minutes</p>
-            <p class="general-info">Beginner / Intermediate / Advanced</p>
-            <span class="divider"></span>
-            <p class="info"></p>
-            <a href="http://club.teambeachbody.com/program/JerichoMcMatthewsExclusives" class="link">LET'S GET STARTED</a>
-          </div>
-        </div>
-
-      </li>
-          <li class="drawer-item has-hovered-data" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-        <img class="img-card-responsive" data-src="//imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1453248532/Joel/BODExclusives_BoxArt_Joel__20160119.jpg">
-                <a href="http://club.teambeachbody.com/program/JoelFreemanExclusives"></a>
-
-        <div class="metadata-box">
-          <div class="metadata-cell">
-            <a href="javascript:void(0);" class="btn-close-rollover-data"></a>
-            <span class="icon-type" style="background: none;"><img src="/website/static/MUSCLE-BUILDING_ICON.png" alt="Muscle Building"></span>
-            <p class="type">Muscle Building</p>
-            <span class="divider"></span>
-            <p class="general-info"><span class="icon-clock"></span>20-40 Minutes</p>
-            <p class="general-info">Intermediate / Advanced</p>
-            <span class="divider"></span>
-            <p class="info"></p>
-            <a href="http://club.teambeachbody.com/program/JoelFreemanExclusives" class="link">LET'S GET STARTED</a>
-          </div>
-        </div>
-
-      </li>
-          <li class="drawer-item has-hovered-data" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-        <img class="img-card-responsive" data-src="//imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1444263589/TrainerExclusives/ActiveMaternity_BoxArt.jpg">
-                <a href="http://club.teambeachbody.com/program/activematernity"></a>
-
-        <div class="metadata-box">
-          <div class="metadata-cell">
-            <a href="javascript:void(0);" class="btn-close-rollover-data"></a>
-            <span class="icon-type" style="background: none;"><img src="/website/static/LOW-IMPACT_ICON.png" alt="Low-Impact"></span>
-            <p class="type">Low-Impact</p>
-            <span class="divider"></span>
-            <p class="general-info"><span class="icon-clock"></span>25-35 Minutes</p>
-            <p class="general-info">Beginner / Intermediate</p>
-            <span class="divider"></span>
-            <p class="info"></p>
-            <a href="http://club.teambeachbody.com/program/activematernity" class="link">LET'S GET STARTED</a>
-          </div>
-        </div>
-
-      </li>
-          <li class="drawer-item has-hovered-data" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-        <img class="img-card-responsive" data-src="//imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1419297171/Insanity/SAN_BoxArt_20150308.jpg">
-                <a href="http://club.teambeachbody.com/program/insanity"></a>
-
-        <div class="metadata-box">
-          <div class="metadata-cell">
-            <a href="javascript:void(0);" class="btn-close-rollover-data"></a>
-            <span class="icon-type" style="background: none;"><img src="/website/static/CARDIO_ICON.png" alt="Cardio"></span>
-            <p class="type">Cardio</p>
-            <span class="divider"></span>
-            <p class="general-info"><span class="icon-clock"></span>60 DAYS, 15â60 minutes a day</p>
-            <p class="general-info">Advanced</p>
-            <span class="divider"></span>
-            <p class="info"></p>
-            <a href="http://club.teambeachbody.com/program/insanity" class="link">LET'S GET STARTED</a>
-          </div>
-        </div>
-
-      </li>
-          <li class="drawer-item has-hovered-data" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-        <img class="img-card-responsive" data-src="//imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1422469415/BrazilButtLift/BrazilButtLift_Program_BoxArt_540x672_w0zm2h.jpg">
-                <a href="http://club.teambeachbody.com/program/brazilbuttlift"></a>
-
-        <div class="metadata-box">
-          <div class="metadata-cell">
-            <a href="javascript:void(0);" class="btn-close-rollover-data"></a>
-            <span class="icon-type" style="background: none;"><img src="/website/static/DANCE_ICON.png" alt="Dance / Cardio"></span>
-            <p class="type">Dance / Cardio</p>
-            <span class="divider"></span>
-            <p class="general-info"><span class="icon-clock"></span>60 DAYS; 10â50 minutes a day</p>
-            <p class="general-info">Beginner / Intermediate</p>
-            <span class="divider"></span>
-            <p class="info"></p>
-            <a href="http://club.teambeachbody.com/program/brazilbuttlift" class="link">LET'S GET STARTED</a>
-          </div>
-        </div>
-
-      </li>
-          <li class="drawer-item has-hovered-data" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-        <img class="img-card-responsive" data-src="//imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1419297174/TurboFire/TR_BoxArt_20150308.jpg">
-                <a href="http://club.teambeachbody.com/program/turbofire"></a>
-
-        <div class="metadata-box">
-          <div class="metadata-cell">
-            <a href="javascript:void(0);" class="btn-close-rollover-data"></a>
-            <span class="icon-type" style="background: none;"><img src="/website/static/CARDIO_ICON.png" alt="Cardio / Dance"></span>
-            <p class="type">Cardio / Dance</p>
-            <span class="divider"></span>
-            <p class="general-info"><span class="icon-clock"></span>90 DAYS; 10â55 minutes a day</p>
-            <p class="general-info">Intermediate / Advanced</p>
-            <span class="divider"></span>
-            <p class="info"></p>
-            <a href="http://club.teambeachbody.com/program/turbofire" class="link">LET'S GET STARTED</a>
-          </div>
-        </div>
-
-      </li>
-          <li class="drawer-item has-hovered-data" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-        <img class="img-card-responsive" data-src="//imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1419297173/P90X3/P90X3_Program_BoxArt_540x672_fgqhks.jpg">
-                <a href="http://club.teambeachbody.com/program/p90x3"></a>
-
-        <div class="metadata-box">
-          <div class="metadata-cell">
-            <a href="javascript:void(0);" class="btn-close-rollover-data"></a>
-            <span class="icon-type" style="background: none;"><img src="/website/static/MUSCLE-BUILDING_ICON.png" alt="Muscle Building / Slim &amp; Tone"></span>
-            <p class="type">Muscle Building / Slim &amp; Tone</p>
-            <span class="divider"></span>
-            <p class="general-info"><span class="icon-clock"></span>90 Days; 30 mins a day</p>
-            <p class="general-info">Intermediate / Advanced</p>
-            <span class="divider"></span>
-            <p class="info"></p>
-            <a href="http://club.teambeachbody.com/program/p90x3" class="link">LET'S GET STARTED</a>
-          </div>
-        </div>
-
-      </li>
-          <li class="drawer-item has-hovered-data" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-        <img class="img-card-responsive" data-src="//imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1419297172/P90X2/P90X2_Program_ThumbBoxArt_540x672_hsfjpx.jpg">
-                <a href="http://club.teambeachbody.com/program/p90x2"></a>
-
-        <div class="metadata-box">
-          <div class="metadata-cell">
-            <a href="javascript:void(0);" class="btn-close-rollover-data"></a>
-            <span class="icon-type" style="background: none;"><img src="/website/static/MUSCLE-BUILDING_ICON.png" alt="Muscle Building / Slim &amp; Tone"></span>
-            <p class="type">Muscle Building / Slim &amp; Tone</p>
-            <span class="divider"></span>
-            <p class="general-info"><span class="icon-clock"></span>90 DAYS; 50â60 minutes a day</p>
-            <p class="general-info">Advanced</p>
-            <span class="divider"></span>
-            <p class="info"></p>
-            <a href="http://club.teambeachbody.com/program/p90x2" class="link">LET'S GET STARTED</a>
-          </div>
-        </div>
-
-      </li>
-          <li class="drawer-item has-hovered-data" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-        <img class="img-card-responsive" data-src="//imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1419297172/P90X/P90X_Program_BoxArt_540x672_royey9.jpg">
-                <a href="http://club.teambeachbody.com/program/p90x"></a>
-
-        <div class="metadata-box">
-          <div class="metadata-cell">
-            <a href="javascript:void(0);" class="btn-close-rollover-data"></a>
-            <span class="icon-type" style="background: none;"><img src="/website/static/MUSCLE-BUILDING_ICON.png" alt="Muscle Building / Slim &amp; Tone"></span>
-            <p class="type">Muscle Building / Slim &amp; Tone</p>
-            <span class="divider"></span>
-            <p class="general-info"><span class="icon-clock"></span>90 DAYS; 45â60 minutes a day</p>
-            <p class="general-info">Advanced</p>
-            <span class="divider"></span>
-            <p class="info"></p>
-            <a href="http://club.teambeachbody.com/program/p90x" class="link">LET'S GET STARTED</a>
-          </div>
-        </div>
-
-      </li>
-          <li class="drawer-item has-hovered-data" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-        <img class="img-card-responsive" data-src="//imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1419297170/ChaleanExtreme/ChaLeanExtreme_Program_BoxArt_540x672_nsqgpe.jpg">
-                <a href="http://club.teambeachbody.com/program/chaleanextreme"></a>
-
-        <div class="metadata-box">
-          <div class="metadata-cell">
-            <a href="javascript:void(0);" class="btn-close-rollover-data"></a>
-            <span class="icon-type" style="background: none;"><img src="/website/static/SLIM-TONE_ICON.png" alt="Slim &amp; Tone / Cardio"></span>
-            <p class="type">Slim &amp; Tone / Cardio</p>
-            <span class="divider"></span>
-            <p class="general-info"><span class="icon-clock"></span>90 DAYS; 30â45 minutes a day</p>
-            <p class="general-info">Advanced</p>
-            <span class="divider"></span>
-            <p class="info"></p>
-            <a href="http://club.teambeachbody.com/program/chaleanextreme" class="link">LET'S GET STARTED</a>
-          </div>
-        </div>
-
-      </li>
-          <li class="drawer-item has-hovered-data" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-        <img class="img-card-responsive" data-src="//imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1419297169/HipHopAbs/HipHopAbs_Program_BoxArt_540x672_an9qji.jpg">
-                <a href="http://club.teambeachbody.com/program/hiphopabs"></a>
-
-        <div class="metadata-box">
-          <div class="metadata-cell">
-            <a href="javascript:void(0);" class="btn-close-rollover-data"></a>
-            <span class="icon-type" style="background: none;"><img src="/website/static/DANCE_ICON.png" alt="Dance / Cardio"></span>
-            <p class="type">Dance / Cardio</p>
-            <span class="divider"></span>
-            <p class="general-info"><span class="icon-clock"></span>60 DAYS; 25â45 minutes a day</p>
-            <p class="general-info">Beginner / Intermediate</p>
-            <span class="divider"></span>
-            <p class="info"></p>
-            <a href="http://club.teambeachbody.com/program/hiphopabs" class="link">LET'S GET STARTED</a>
-          </div>
-        </div>
-
-      </li>
-          <li class="drawer-item has-hovered-data" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-        <img class="img-card-responsive" data-src="//imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1419297170/10MinTrainer/10MinuteTrainer_Program_BoxArt_540x672_qxzg8w.jpg">
-                <a href="http://club.teambeachbody.com/program/10mintrainer"></a>
-
-        <div class="metadata-box">
-          <div class="metadata-cell">
-            <a href="javascript:void(0);" class="btn-close-rollover-data"></a>
-            <span class="icon-type" style="background: none;"><img src="/website/static/SLIM-TONE_ICON.png" alt="Slim &amp; Tone"></span>
-            <p class="type">Slim &amp; Tone</p>
-            <span class="divider"></span>
-            <p class="general-info"><span class="icon-clock"></span>60 Days; 10 minutes a day</p>
-            <p class="general-info">Beginner / Intermediate</p>
-            <span class="divider"></span>
-            <p class="info"></p>
-            <a href="http://club.teambeachbody.com/program/10mintrainer" class="link">LET'S GET STARTED</a>
-          </div>
-        </div>
-
-      </li>
-          <li class="drawer-item has-hovered-data" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-        <img class="img-card-responsive" data-src="//imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1419297172/P90XOneOnOne/OneOnOne_Program_BoxArt_540x672_dogasi.jpg">
-                <a href="http://club.teambeachbody.com/program/p90xoneonone"></a>
-
-        <div class="metadata-box">
-          <div class="metadata-cell">
-            <a href="javascript:void(0);" class="btn-close-rollover-data"></a>
-            <span class="icon-type" style="background: none;"><img src="/website/static/MUSCLE-BUILDING_ICON.png" alt="Muscle Building / Slim &amp; Tone"></span>
-            <p class="type">Muscle Building / Slim &amp; Tone</p>
-            <span class="divider"></span>
-            <p class="general-info"><span class="icon-clock"></span>30â70 minutes a day</p>
-            <p class="general-info">Advanced</p>
-            <span class="divider"></span>
-            <p class="info"></p>
-            <a href="http://club.teambeachbody.com/program/p90xoneonone" class="link">LET'S GET STARTED</a>
-          </div>
-        </div>
-
-      </li>
-          <li class="drawer-item has-hovered-data" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-        <img class="img-card-responsive" data-src="//imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1419297170/InsanityAsylumVol1/Insanity_Asylum_V1_Program_BoxArt_540x672_emmmp1.jpg">
-                <a href="http://club.teambeachbody.com/program/insanityasylumvol1"></a>
-
-        <div class="metadata-box">
-          <div class="metadata-cell">
-            <a href="javascript:void(0);" class="btn-close-rollover-data"></a>
-            <span class="icon-type" style="background: none;"><img src="/website/static/SLIM-TONE_ICON.png" alt="Slim &amp; Tone / Cardio"></span>
-            <p class="type">Slim &amp; Tone / Cardio</p>
-            <span class="divider"></span>
-            <p class="general-info"><span class="icon-clock"></span>30 DAYS; 45â60 minutes a day</p>
-            <p class="general-info">Advanced</p>
-            <span class="divider"></span>
-            <p class="info"></p>
-            <a href="http://club.teambeachbody.com/program/insanityasylumvol1" class="link">LET'S GET STARTED</a>
-          </div>
-        </div>
-
-      </li>
-          <li class="drawer-item has-hovered-data" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-        <img class="img-card-responsive" data-src="//imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1427827841/Program_Thumbs_ASY2_tgzjlx.jpg">
-                <a href="http://club.teambeachbody.com/program/insanityasylumvol2"></a>
-
-        <div class="metadata-box">
-          <div class="metadata-cell">
-            <a href="javascript:void(0);" class="btn-close-rollover-data"></a>
-            <span class="icon-type" style="background: none;"><img src="/website/static/MUSCLE-BUILDING_ICON.png" alt="Muscle Building / Cardio"></span>
-            <p class="type">Muscle Building / Cardio</p>
-            <span class="divider"></span>
-            <p class="general-info"><span class="icon-clock"></span>30 DAYS; 20â60 minutes a day</p>
-            <p class="general-info">Advanced</p>
-            <span class="divider"></span>
-            <p class="info"></p>
-            <a href="http://club.teambeachbody.com/program/insanityasylumvol2" class="link">LET'S GET STARTED</a>
-          </div>
-        </div>
-
-      </li>
-          <li class="drawer-item has-hovered-data" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-        <img class="img-card-responsive" data-src="//imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1432852145/BrazilButtLiftMaster/BBL_Master_Program_BoxArt_540x672_20150601.jpg">
-                <a href="http://club.teambeachbody.com/program/BrazilButtLiftMaster"></a>
-
-        <div class="metadata-box">
-          <div class="metadata-cell">
-            <a href="javascript:void(0);" class="btn-close-rollover-data"></a>
-            <span class="icon-type" style="background: none;"><img src="/website/static/DANCE_ICON.png" alt="Dance / Cardio"></span>
-            <p class="type">Dance / Cardio</p>
-            <span class="divider"></span>
-            <p class="general-info"><span class="icon-clock"></span>30 DAYS; 25â35 minutes a day</p>
-            <p class="general-info">Intermediate</p>
-            <span class="divider"></span>
-            <p class="info"></p>
-            <a href="http://club.teambeachbody.com/program/BrazilButtLiftMaster" class="link">LET'S GET STARTED</a>
-          </div>
-        </div>
-
-      </li>
-          <li class="drawer-item has-hovered-data" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-        <img class="img-card-responsive" data-src="//imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1419297173/SlimIn6/SL6_Program_BoxArt_540x672_20150601.jpg">
-                <a href="http://club.teambeachbody.com/program/Slimin6"></a>
-
-        <div class="metadata-box">
-          <div class="metadata-cell">
-            <a href="javascript:void(0);" class="btn-close-rollover-data"></a>
-            <span class="icon-type" style="background: none;"><img src="/website/static/SLIM-TONE_ICON.png" alt="Slim &amp; Tone / Cardio"></span>
-            <p class="type">Slim &amp; Tone / Cardio</p>
-            <span class="divider"></span>
-            <p class="general-info"><span class="icon-clock"></span>6 WEEKS; 25â60 minutes a day</p>
-            <p class="general-info">Beginner / Intermediate</p>
-            <span class="divider"></span>
-            <p class="info"></p>
-            <a href="http://club.teambeachbody.com/program/Slimin6" class="link">LET'S GET STARTED</a>
-          </div>
-        </div>
-
-      </li>
-          <li class="drawer-item has-hovered-data" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-        <img class="img-card-responsive" data-src="//imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1430175296/RockinBody/RB_Program_BoxArt_540x672_20150501.jpg">
-                <a href="http://club.teambeachbody.com/program/RockinBody"></a>
-
-        <div class="metadata-box">
-          <div class="metadata-cell">
-            <a href="javascript:void(0);" class="btn-close-rollover-data"></a>
-            <span class="icon-type" style="background: none;"><img src="/website/static/DANCE_ICON.png" alt="Dance / Cardio"></span>
-            <p class="type">Dance / Cardio</p>
-            <span class="divider"></span>
-            <p class="general-info"><span class="icon-clock"></span>60 DAYS; 15â45 minutes a day</p>
-            <p class="general-info">Beginner / Intermediate</p>
-            <span class="divider"></span>
-            <p class="info"></p>
-            <a href="http://club.teambeachbody.com/program/RockinBody" class="link">LET'S GET STARTED</a>
-          </div>
-        </div>
-
-      </li>
-          <li class="drawer-item has-hovered-data" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-        <img class="img-card-responsive" data-src="//imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1427822485/Program_Thumbs_540x672_RevAbs_kgpzpy.jpg">
-                <a href="http://club.teambeachbody.com/program/RevAbs"></a>
-
-        <div class="metadata-box">
-          <div class="metadata-cell">
-            <a href="javascript:void(0);" class="btn-close-rollover-data"></a>
-            <span class="icon-type" style="background: none;"><img src="/website/static/CARDIO_ICON.png" alt="Cardio / Slim &amp; Tone"></span>
-            <p class="type">Cardio / Slim &amp; Tone</p>
-            <span class="divider"></span>
-            <p class="general-info"><span class="icon-clock"></span>25â80 minutes a day</p>
-            <p class="general-info">Advanced</p>
-            <span class="divider"></span>
-            <p class="info"></p>
-            <a href="http://club.teambeachbody.com/program/RevAbs" class="link">LET'S GET STARTED</a>
-          </div>
-        </div>
-
-      </li>
-          <li class="drawer-item has-hovered-data" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-        <img class="img-card-responsive" data-src="//imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1427822488/Program_Thumbs_540x672_TaiCheng_njcuka.jpg">
-                <a href="http://club.teambeachbody.com/program/TaiCheng"></a>
-
-        <div class="metadata-box">
-          <div class="metadata-cell">
-            <a href="javascript:void(0);" class="btn-close-rollover-data"></a>
-            <span class="icon-type" style="background: none;"><img src="/website/static/LOW-IMPACT_ICON.png" alt="Low Impact / Slim &amp; Tone"></span>
-            <p class="type">Low Impact / Slim &amp; Tone</p>
-            <span class="divider"></span>
-            <p class="general-info"><span class="icon-clock"></span>25â80 minutes a day</p>
-            <p class="general-info">Beginner</p>
-            <span class="divider"></span>
-            <p class="info"></p>
-            <a href="http://club.teambeachbody.com/program/TaiCheng" class="link">LET'S GET STARTED</a>
-          </div>
-        </div>
-
-      </li>
-          <li class="drawer-item has-hovered-data" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-        <img class="img-card-responsive" data-src="//imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1430177075/TurboJam/TJ_Program_BoxArt_540x672_20150501.jpg">
-                <a href="http://club.teambeachbody.com/program/TurboJam"></a>
-
-        <div class="metadata-box">
-          <div class="metadata-cell">
-            <a href="javascript:void(0);" class="btn-close-rollover-data"></a>
-            <span class="icon-type" style="background: none;"><img src="/website/static/CARDIO_ICON.png" alt="Cardio / Dance"></span>
-            <p class="type">Cardio / Dance</p>
-            <span class="divider"></span>
-            <p class="general-info"><span class="icon-clock"></span>60 DAYS; 20â45 minutes a day</p>
-            <p class="general-info">Intermediate</p>
-            <span class="divider"></span>
-            <p class="info"></p>
-            <a href="http://club.teambeachbody.com/program/TurboJam" class="link">LET'S GET STARTED</a>
-          </div>
-        </div>
-
-      </li>
-          <li class="drawer-item has-hovered-data" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-        <img class="img-card-responsive" data-src="//imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1430177317/YogaBootyBallet/YBB_Program_BoxArt_540x672_20150501.jpg">
-                <a href="http://club.teambeachbody.com/program/YogaBootyBallet"></a>
-
-        <div class="metadata-box">
-          <div class="metadata-cell">
-            <a href="javascript:void(0);" class="btn-close-rollover-data"></a>
-            <span class="icon-type" style="background: none;"><img src="/website/static/CARDIO_ICON.png" alt="Low-Impact / Slim &amp; Tone"></span>
-            <p class="type">Low-Impact / Slim &amp; Tone</p>
-            <span class="divider"></span>
-            <p class="general-info"><span class="icon-clock"></span>10â60 minutes a day</p>
-            <p class="general-info">Beginner / Intermediate</p>
-            <span class="divider"></span>
-            <p class="info"></p>
-            <a href="http://club.teambeachbody.com/program/YogaBootyBallet" class="link">LET'S GET STARTED</a>
-          </div>
-        </div>
-
-      </li>
-          <li class="drawer-item has-hovered-data" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-        <img class="img-card-responsive" data-src="//imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1430176963/TotalBodySolution/TB_Program_BoxArt_540x672_20150501.jpg">
-                <a href="http://club.teambeachbody.com/program/TotalBodySolution"></a>
-
-        <div class="metadata-box">
-          <div class="metadata-cell">
-            <a href="javascript:void(0);" class="btn-close-rollover-data"></a>
-            <span class="icon-type" style="background: none;"><img src="/website/static/LOW-IMPACT_ICON.png" alt="Low-Impact"></span>
-            <p class="type">Low-Impact</p>
-            <span class="divider"></span>
-            <p class="general-info"><span class="icon-clock"></span>15 minutes a day</p>
-            <p class="general-info">Beginner</p>
-            <span class="divider"></span>
-            <p class="info"></p>
-            <a href="http://club.teambeachbody.com/program/TotalBodySolution" class="link">LET'S GET STARTED</a>
-          </div>
-        </div>
-
-      </li>
-          <li class="drawer-item has-hovered-data" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-        <img class="img-card-responsive" data-src="//imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1430175115/PowerHalfHour/PHH_Program_BoxArt_540x672_20150501.jpg">
-                <a href="http://club.teambeachbody.com/program/PowerHalfHour"></a>
-
-        <div class="metadata-box">
-          <div class="metadata-cell">
-            <a href="javascript:void(0);" class="btn-close-rollover-data"></a>
-            <span class="icon-type" style="background: none;"><img src="/website/static/MUSCLE-BUILDING_ICON.png" alt="Muscle Building / Slim &amp; Tone"></span>
-            <p class="type">Muscle Building / Slim &amp; Tone</p>
-            <span class="divider"></span>
-            <p class="general-info"><span class="icon-clock"></span>30 DAYS; 30 minutes a day</p>
-            <p class="general-info">Intermediate</p>
-            <span class="divider"></span>
-            <p class="info"></p>
-            <a href="http://club.teambeachbody.com/program/PowerHalfHour" class="link">LET'S GET STARTED</a>
-          </div>
-        </div>
-
-      </li>
-          <li class="drawer-item has-hovered-data" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-        <img class="img-card-responsive" data-src="//imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1430173078/KSProjectYouType2/KS_Program_BoxArt_540x672_20150501.jpg">
-                <a href="http://club.teambeachbody.com/program/KSProjectYouType2"></a>
-
-        <div class="metadata-box">
-          <div class="metadata-cell">
-            <a href="javascript:void(0);" class="btn-close-rollover-data"></a>
-            <span class="icon-type" style="background: none;"><img src="/website/static/CARDIO_ICON.png" alt="Cardio / Slim &amp; Tone"></span>
-            <p class="type">Cardio / Slim &amp; Tone</p>
-            <span class="divider"></span>
-            <p class="general-info"><span class="icon-clock"></span>20â60 minutes a day</p>
-            <p class="general-info">Beginner</p>
-            <span class="divider"></span>
-            <p class="info"></p>
-            <a href="http://club.teambeachbody.com/program/KSProjectYouType2" class="link">LET'S GET STARTED</a>
-          </div>
-        </div>
-
-      </li>
-          <li class="drawer-item has-hovered-data" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-        <img class="img-card-responsive" data-src="//imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1430172727/GreatBodyGuaranteed/GBG_Program_BoxArt_540x672_20150501.jpg">
-                <a href="http://club.teambeachbody.com/program/GreatBodyGuaranteed"></a>
-
-        <div class="metadata-box">
-          <div class="metadata-cell">
-            <a href="javascript:void(0);" class="btn-close-rollover-data"></a>
-            <span class="icon-type" style="background: none;"><img src="/website/static/SLIM-TONE_ICON.png" alt="Slim &amp; Tone"></span>
-            <p class="type">Slim &amp; Tone</p>
-            <span class="divider"></span>
-            <p class="general-info"><span class="icon-clock"></span>7â11 minutes a day</p>
-            <p class="general-info">Beginner</p>
-            <span class="divider"></span>
-            <p class="info"></p>
-            <a href="http://club.teambeachbody.com/program/GreatBodyGuaranteed" class="link">LET'S GET STARTED</a>
-          </div>
-        </div>
-
-      </li>
-          <li class="drawer-item has-hovered-data" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-        <img class="img-card-responsive" data-src="//imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1430175057/Power90/P90_Program_BoxArt_540x672_20150501.jpg">
-                <a href="http://club.teambeachbody.com/program/Power90"></a>
-
-        <div class="metadata-box">
-          <div class="metadata-cell">
-            <a href="javascript:void(0);" class="btn-close-rollover-data"></a>
-            <span class="icon-type" style="background: none;"><img src="/website/static/SLIM-TONE_ICON.png" alt="Slim &amp; Tone / Muscle Building"></span>
-            <p class="type">Slim &amp; Tone / Muscle Building</p>
-            <span class="divider"></span>
-            <p class="general-info"><span class="icon-clock"></span>90 DAYS; 4â38 minutes a day</p>
-            <p class="general-info">Beginner / Intermediate</p>
-            <span class="divider"></span>
-            <p class="info"></p>
-            <a href="http://club.teambeachbody.com/program/Power90" class="link">LET'S GET STARTED</a>
-          </div>
-        </div>
-
-      </li>
-          <li class="drawer-item has-hovered-data" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-        <img class="img-card-responsive" data-src="//imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1430173045/HoAlaKeKino/HOA_Program_BoxArt_540x672_20150501.jpg">
-                <a href="http://club.teambeachbody.com/program/HoAlakeKino"></a>
-
-        <div class="metadata-box">
-          <div class="metadata-cell">
-            <a href="javascript:void(0);" class="btn-close-rollover-data"></a>
-            <span class="icon-type" style="background: none;"><img src="/website/static/CARDIO_ICON.png" alt="Yoga / Low-Impact"></span>
-            <p class="type">Yoga / Low-Impact</p>
-            <span class="divider"></span>
-            <p class="general-info"><span class="icon-clock"></span>30 minutes a day</p>
-            <p class="general-info">Beginner</p>
-            <span class="divider"></span>
-            <p class="info"></p>
-            <a href="http://club.teambeachbody.com/program/HoAlakeKino" class="link">LET'S GET STARTED</a>
-          </div>
-        </div>
-
-      </li>
+    <?
+    }
+    ?>
         </ul></div><div class="bx-controls bx-has-controls-direction"><div class="bx-controls-direction"><a class="bx-prev disabled" href="">Prev</a><a class="bx-next" href="">Next</a></div></div></div>
   </div>
 </div>
@@ -1201,20 +641,24 @@ window.bbLoaders[window.bbLoaders.length] = function() {
   </a>
 
   <div class="slider-box loaded">
-    <div class="bx-wrapper" style="max-width: 1170px; margin: 0px auto;"><div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative; height: 336px;"><ul class="bxslider drawer-slider slider-cards" id="premium_programs" style="width: 1115%; position: relative; transition-duration: 0s; transform: translate3d(-40px, 0px, 0px);">
-          <li class="drawer-item has-hovered-data" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-        <img class="img-card-responsive inited" data-src="//imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1419297170/BodyBeast/BodyBeast_Program_BoxArt_540x672_vnwamc.jpg" src="/website/static/BodyBeast_Program_BoxArt_540x672_vnwamc.jpg">
+    <div class="bx-wrapper" style="max-width: 1170px; margin: 0px auto;">
+    <div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative; height: 336px;"><ul class="bxslider drawer-slider slider-cards" id="premium_programs" style="width: 1115%; position: relative; transition-duration: 0s; transform: translate3d(-40px, 0px, 0px);">
+    <?
+    foreach ($premiumPrograms as $key => $value) {
+    ?>
+        <li class="drawer-item has-hovered-data" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
+        <img class="img-card-responsive inited" data-src="<?= $value->getPimage();?>" src="<?= $value->getPimage();?>">
                   <div class="item-overlay premium">UNLOCK NOW</div>
                 <a href="http://club.teambeachbody.com/program/BodyBeast"></a>
 
         <div class="metadata-box">
           <div class="metadata-cell">
             <a href="javascript:void(0);" class="btn-close-rollover-data"></a>
-            <span class="icon-type" style="background: none;"><img src="/website/static/MUSCLE-BUILDING_ICON.png" alt="Muscle Building"></span>
-            <p class="type">Muscle Building</p>
+            <span class="icon-type" style="background: none;"><img src="<?= $value->getFimage();?>" alt="<?= $value->getPtype();?>"></span>
+            <p class="type"><?= $value->getPtype();?></p>
             <span class="divider"></span>
-            <p class="general-info"><span class="icon-clock"></span>90 DAYS; 11-53 minutes a day</p>
-            <p class="general-info">Intermediate / Advanced</p>
+            <p class="general-info"><span class="icon-clock"></span><?= $value->getFtimelabel();?></p>
+            <p class="general-info"><?= $value->getFexpertlevel();?></p>
             <span class="divider"></span>
             <p class="info"></p>
             <a href="http://club.teambeachbody.com/program/BodyBeast" class="link">UNLOCK NOW</a>
@@ -1222,166 +666,9 @@ window.bbLoaders[window.bbLoaders.length] = function() {
         </div>
 
       </li>
-          <li class="drawer-item has-hovered-data" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-        <img class="img-card-responsive inited" data-src="//imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1432678455/CIZE/CZ_Program_BoxArt_20150715.jpg" src="/website/static/CZ_Program_BoxArt_20150715.jpg">
-                  <div class="item-overlay premium">UNLOCK NOW</div>
-                <a href="http://club.teambeachbody.com/program/CIZE"></a>
-
-        <div class="metadata-box">
-          <div class="metadata-cell">
-            <a href="javascript:void(0);" class="btn-close-rollover-data"></a>
-            <span class="icon-type" style="background: none;"><img src="/website/static/DANCE_ICON.png" alt="Dance / Cardio"></span>
-            <p class="type">Dance / Cardio</p>
-            <span class="divider"></span>
-            <p class="general-info"><span class="icon-clock"></span>4 weeks; 30-50 minutes</p>
-            <p class="general-info">Beginner / Intermediate</p>
-            <span class="divider"></span>
-            <p class="info"></p>
-            <a href="http://club.teambeachbody.com/program/CIZE" class="link">UNLOCK NOW</a>
-          </div>
-        </div>
-
-      </li>
-          <li class="drawer-item has-hovered-data" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-        <img class="img-card-responsive inited" data-src="//imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1425488667/Program_Thumbs_540x672_T25_ybppjv.jpg" src="/website/static/Program_Thumbs_540x672_T25_ybppjv.jpg">
-                  <div class="item-overlay premium">UNLOCK NOW</div>
-                <a href="http://club.teambeachbody.com/program/FocusT25"></a>
-
-        <div class="metadata-box">
-          <div class="metadata-cell">
-            <a href="javascript:void(0);" class="btn-close-rollover-data"></a>
-            <span class="icon-type" style="background: none;"><img src="/website/static/CARDIO_ICON.png" alt="Cardio / Slim &amp; Tone"></span>
-            <p class="type">Cardio / Slim &amp; Tone</p>
-            <span class="divider"></span>
-            <p class="general-info"><span class="icon-clock"></span>10 WEEKS; 25 minutes a day</p>
-            <p class="general-info">Intermediate</p>
-            <span class="divider"></span>
-            <p class="info"></p>
-            <a href="http://club.teambeachbody.com/program/FocusT25" class="link">UNLOCK NOW</a>
-          </div>
-        </div>
-
-      </li>
-          <li class="drawer-item has-hovered-data coming-soon" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-        <img class="img-card-responsive inited" data-src="//imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1425488665/Program_Thumbs_540x672_21DayFix_yh5se8.jpg" src="/website/static/Program_Thumbs_540x672_21DayFix_yh5se8.jpg">
-                  <div class="item-overlay premium">PREVIEW NOW</div>
-                <a href="http://club.teambeachbody.com/program/21DayFix"></a>
-
-        <div class="metadata-box">
-          <div class="metadata-cell">
-            <a href="javascript:void(0);" class="btn-close-rollover-data"></a>
-            <span class="icon-type" style="background: none;"><img src="/website/static/SLIM-TONE_ICON.png" alt="Slim &amp; Tone / Cardio"></span>
-            <p class="type">Slim &amp; Tone / Cardio</p>
-            <span class="divider"></span>
-            <p class="general-info"><span class="icon-clock"></span>21 DAYS; 30 minutes a day</p>
-            <p class="general-info">Beginner / Intermediate</p>
-            <span class="divider"></span>
-            <p class="info"></p>
-            <a href="http://club.teambeachbody.com/program/21DayFix" class="link">PREVIEW NOW</a>
-          </div>
-        </div>
-
-      </li>
-          <li class="drawer-item has-hovered-data coming-soon" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-        <img class="img-card-responsive" data-src="//imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1425488666/Program_Thumbs_540x672_21DayFixExtreme_ngo3ka.jpg">
-                  <div class="item-overlay premium">PREVIEW NOW</div>
-                <a href="http://club.teambeachbody.com/program/21DayFixExtreme"></a>
-
-        <div class="metadata-box">
-          <div class="metadata-cell">
-            <a href="javascript:void(0);" class="btn-close-rollover-data"></a>
-            <span class="icon-type" style="background: none;"><img src="/website/static/SLIM-TONE_ICON.png" alt="Slim &amp; Tone / Cardio"></span>
-            <p class="type">Slim &amp; Tone / Cardio</p>
-            <span class="divider"></span>
-            <p class="general-info"><span class="icon-clock"></span>21 DAYS; 30 minutes a day</p>
-            <p class="general-info">Advanced</p>
-            <span class="divider"></span>
-            <p class="info"></p>
-            <a href="http://club.teambeachbody.com/program/21DayFixExtreme" class="link">PREVIEW NOW</a>
-          </div>
-        </div>
-
-      </li>
-          <li class="drawer-item has-hovered-data coming-soon" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-        <img class="img-card-responsive" data-src="//imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1447358214/HammerChisel/MHC_Launch_Box_Art.jpg">
-                  <div class="item-overlay premium">PREVIEW NOW</div>
-                <a href="http://club.teambeachbody.com/program/HammerandChisel"></a>
-
-        <div class="metadata-box">
-          <div class="metadata-cell">
-            <a href="javascript:void(0);" class="btn-close-rollover-data"></a>
-            <span class="icon-type" style="background: none;"><img src="/website/static/MUSCLE-BUILDING_ICON.png" alt="Todayâs Workout"></span>
-            <p class="type">Todayâs Workout</p>
-            <span class="divider"></span>
-            <p class="general-info"><span class="icon-clock"></span>Welcome to The Masterâs Challenge</p>
-            <p class="general-info">To join in, post pics, connect</p>
-            <span class="divider"></span>
-            <p class="info"></p>
-            <a href="http://club.teambeachbody.com/program/HammerandChisel" class="link">PREVIEW NOW</a>
-          </div>
-        </div>
-
-      </li>
-          <li class="drawer-item has-hovered-data coming-soon" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-        <img class="img-card-responsive" data-src="//imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1419297171/InsanityMax30/InsanityMax30_Program_BoxArt_540x672_nvboiz.jpg">
-                  <div class="item-overlay premium">PREVIEW NOW</div>
-                <a href="http://club.teambeachbody.com/program/InsanityMax30"></a>
-
-        <div class="metadata-box">
-          <div class="metadata-cell">
-            <a href="javascript:void(0);" class="btn-close-rollover-data"></a>
-            <span class="icon-type" style="background: none;"><img src="/website/static/CARDIO_ICON.png" alt="Cardio"></span>
-            <p class="type">Cardio</p>
-            <span class="divider"></span>
-            <p class="general-info"><span class="icon-clock"></span>60 DAYS; 30 minutes a day</p>
-            <p class="general-info">Advanced</p>
-            <span class="divider"></span>
-            <p class="info"></p>
-            <a href="http://club.teambeachbody.com/program/InsanityMax30" class="link">PREVIEW NOW</a>
-          </div>
-        </div>
-
-      </li>
-          <li class="drawer-item has-hovered-data coming-soon" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-        <img class="img-card-responsive" data-src="//imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1419297172/P90/P90_Program_BoxArt_540x672_oewcsr.jpg">
-                  <div class="item-overlay premium">PREVIEW NOW</div>
-                <a href="http://club.teambeachbody.com/program/P90"></a>
-
-        <div class="metadata-box">
-          <div class="metadata-cell">
-            <a href="javascript:void(0);" class="btn-close-rollover-data"></a>
-            <span class="icon-type" style="background: none;"><img src="/website/static/CARDIO_ICON.png" alt="Cardio / Muscle Building"></span>
-            <p class="type">Cardio / Muscle Building</p>
-            <span class="divider"></span>
-            <p class="general-info"><span class="icon-clock"></span>90 DAYS; 45-60 minutes a day</p>
-            <p class="general-info">Beginner / Intermediate</p>
-            <span class="divider"></span>
-            <p class="info"></p>
-            <a href="http://club.teambeachbody.com/program/P90" class="link">PREVIEW NOW</a>
-          </div>
-        </div>
-
-      </li>
-          <li class="drawer-item has-hovered-data coming-soon" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-        <img class="img-card-responsive" data-src="//imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1447112948/PiYo/PIYO_BoxArt_Rev.jpg">
-                  <div class="item-overlay premium">PREVIEW NOW</div>
-                <a href="http://club.teambeachbody.com/program/PiYo"></a>
-
-        <div class="metadata-box">
-          <div class="metadata-cell">
-            <a href="javascript:void(0);" class="btn-close-rollover-data"></a>
-            <span class="icon-type" style="background: none;"><img src="/website/static/CARDIO_ICON.png" alt="Slim &amp; Tone / Low-Impact"></span>
-            <p class="type">Slim &amp; Tone / Low-Impact</p>
-            <span class="divider"></span>
-            <p class="general-info"><span class="icon-clock"></span>60 DAYS; 25-40 minutes a day</p>
-            <p class="general-info">Beginner / Intermediate</p>
-            <span class="divider"></span>
-            <p class="info"></p>
-            <a href="http://club.teambeachbody.com/program/PiYo" class="link">PREVIEW NOW</a>
-          </div>
-        </div>
-
-      </li>
+    <?php
+    }
+    ?>
         </ul></div><div class="bx-controls bx-has-controls-direction"><div class="bx-controls-direction"><a class="bx-prev disabled" href="">Prev</a><a class="bx-next" href="">Next</a></div></div></div>
   </div>
 </div>
@@ -1504,17 +791,17 @@ window.bbLoaders[window.bbLoaders.length] = function() {
     <div class="row clearfix">
             <div class="col-33">
         <a target="_blank" href="http://www.shakeology.com/?ICID=BOD_SHAKE_SHKJAR_BANNER">
-          <img src="/website/static/SHK_BottomPromo_Jar.jpg">
+          <img src="http://imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1455230545/Shakeology/SHK_BottomPromo_Jar.jpg">
         </a>
       </div>
             <div class="col-33">
         <a target="_blank" href="http://teambeachbody.com/workout-routines/the-masters-hammer-chisel/?ICID=BOD_TBB_MHCLAUNCH_HERO">
-          <img src="/website/static/MHC_BottomPromo_Launch_20151201.jpg">
+          <img src="http://imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1448387333/HammerChisel/MHC_BottomPromo_Launch_20151201.jpg">
         </a>
       </div>
             <div class="col-33">
         <a target="_blank" href="http://mybeachbodyperformance.com/">
-          <img src="/website/static/BB_Performance_BottomPromo_20150630.jpg">
+          <img src="http://imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1435254142/BBPerformance/BB_Performance_BottomPromo_20150630.jpg">
         </a>
       </div>
           </div>
@@ -1542,10 +829,10 @@ window.bbLoaders[window.bbLoaders.length] = function() {
   </div>
       <div class="sponsors">
         <a href="http://www.bbb.org/losangelessiliconvalley/business-reviews/exercise-and-physical-fitness-programs/beachbody-in-santa-monica-ca-13147181" target="_blank">
-          <img src="/website/static/sponsor-1.png" alt="first sponser image">
+          <img src="/website/static/pic/sponsor-1.png" alt="first sponser image">
         </a>
         <a href="http://www.dsa.org/ethics/" target="_blank">
-          <img src="/website/static/sponsor-2.png" alt="second sponser image">
+          <img src="/website/static/pic/sponsor-2.png" alt="second sponser image">
         </a>
       </div>
 
