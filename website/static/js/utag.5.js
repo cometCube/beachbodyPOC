@@ -1,0 +1,6 @@
+//tealium universal tag - utag.5 ut4.0.201601072148, Copyright 2016 Tealium.com Inc. All Rights Reserved.
+try{(function(id,loader,u){try{u=utag.o[loader].sender[id]={}}catch(e){u=utag.sender[id]};u.ev={'view':1,'link':1};u.initialized=false;u.map={"customer_id":"user_id","customer_email":"email"};u.extend=[];u.send=function(a,b){if(u.ev[a]||typeof u.ev.all!="undefined"){var c,d,e,f,g;u.data={"base_url":"//c.lytics.io/static/io.min.js","cid":"1931","cookie":""};g={}
+for(d in utag.loader.GV(u.map)){if(b[d]!==undefined&&b[d]!==""){e=u.map[d].split(",");for(f=0;f<e.length;f++){if(u.data[e[f]]!==undefined){u.data[e[f]]=b[d];}else{g[e[f]]=encodeURIComponent(b[d]);u.data[e[f]]=encodeURIComponent(b[d]);}}}}
+window.jstagAsyncInit=function(){u.initialized=true;jstag.init({cid:u.data.cid,cookie:(u.data.cookie?u.data.cookie:"lyticscookie"),url:"//c.lytics.io"});jstag.send(g);}
+if(!u.initialized){u.s=document.getElementsByTagName("script")[0];u.scr=document.createElement("script");u.scr.type="text/javascript";u.scr.src=u.data.base_url;u.s.parentNode.insertBefore(u.scr,u.s);}else{jstag.send(g);}}}
+try{utag.o[loader].loader.LOAD(id)}catch(e){utag.loader.LOAD(id)}})('5','beachbody.bod-dom');}catch(error){utag.DB(error);}
