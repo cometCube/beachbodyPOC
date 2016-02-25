@@ -3,7 +3,7 @@ $programs = $this->programs;
 ?>
 <div class="container module-tiles module-margin-bottom clearfix">
 
-    <p class="module-title">Member Library</p>
+    <p class="module-title">Programs</p>
 
     <div class="programs-box">
 

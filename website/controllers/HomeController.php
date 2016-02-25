@@ -52,8 +52,16 @@ class HomeController extends Action {
 		$this->view->trainers = $this->trainersListAction();
 	}
 
-	public function trainerAction () {
+	public function trainerProgramsAction () {
 		$this->enableLayout();
+		$trainers = new Object_Trainer_List();
+		$trainers->setCondition("o_key = ?", $this->_getParam('key'));
+		$trainers->load();
+		
+		$programsList = new Object_Program_List();
+    	$programsList->setCondition("trainerID = ?", ",".$trainers->objects[0]->o_id.",");	
+		$programsList->load();
+		$this->view->programs = $programsList->objects;
 	}
     
     public function footerAction() {

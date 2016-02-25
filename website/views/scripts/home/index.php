@@ -272,7 +272,7 @@ window.bbLoaders[window.bbLoaders.length] = function() {
     $trainerName = explode(' ', $value->getTname());
   ?>
     <li class="drawer-item" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-      <a href="http://club.teambeachbody.com/trainers/tony-horton/">
+      <a href="/trainer/<?= $value->getKey();?>">
         <img class="img-card-responsive png-jpg inited" data-src="<?= $value->getTimgage();?>" src="<?= $value->getTimgage();?>">
         <div class="people-name">
           <div>
