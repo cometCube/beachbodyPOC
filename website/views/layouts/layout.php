@@ -1,7 +1,4 @@
 <?php
-$normalPrograms = $this->normalPrograms;
-$premiumPrograms = $this->premiumPrograms;
-$trainers = $this->trainers;
 ?>
 <!DOCTYPE html>
 <!-- saved from url=(0030)http://club.teambeachbody.com/ -->

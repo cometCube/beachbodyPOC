@@ -85,7 +85,7 @@ window.bbLoaders[window.bbLoaders.length] = function() {
 
 <div class="container module-drawer module-margin-bottom clearfix">
 
-  <a class="module-title" href="http://club.teambeachbody.com/programs">Member Library</a>
+  <a class="module-title" href="/programs?type=0">Member Library</a>
     <a class="question-tooltip" href="javascript:void(0);">
       <span class="icon-question"></span>
       <span class="popover">
@@ -140,7 +140,7 @@ window.bbLoaders[window.bbLoaders.length] = function() {
 
 <div class="container module-drawer module-margin-bottom clearfix">
 
-  <a class="module-title" href="http://club.teambeachbody.com/premium-content">Premium Content</a>
+  <a class="module-title" href="/programs?type=1">Premium Content</a>
     <a class="question-tooltip" href="javascript:void(0);">
       <span class="icon-question"></span>
       <span class="popover">
@@ -253,7 +253,7 @@ window.bbLoaders[window.bbLoaders.length] = function() {
 </script>
 <div class="container module-drawer clearfix">
 
-  <a href="http://club.teambeachbody.com/trainers" class="module-title">By Trainer</a>
+  <a href="/trainers" class="module-title">By Trainer</a>
 
     <!-- a class="question-tooltip" href="javascript:void(0);">
         <span class="icon-question"></span>

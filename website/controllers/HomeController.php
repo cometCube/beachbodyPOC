@@ -3,35 +3,58 @@
 use Website\Controller\Action;
 
 class HomeController extends Action {
+
+	public function headerAction() {
+        
+    }
+
+    public function programListAction($type) {
+
+    	$programsList = new Object_Program_List();
+    	if($type == 0) {
+    		$programsList->setCondition("ispremium IS NULL OR ispremium = 0");	
+    	} elseif($type == 1) {
+    		$programsList->setCondition("ispremium = 1");
+    	}
+		$programsList->load();
+		return $programsList->objects;
+    }
+
+    public function trainersListAction() {
+    	$trainers = new Object_Trainer_List();
+		$trainers->load();
+		return $trainers->objects;
+    }
 	
 	public function indexAction () {
 		$this->enableLayout();
 
 		/*Get Normal Programs List*/
-		$normalPrograms = new Object_Program_List();
-		$normalPrograms->setCondition("ispremium IS NULL OR ispremium = 0");
-		$normalPrograms->load();
-		$this->view->normalPrograms = $normalPrograms->objects;
+		$this->view->normalPrograms = $this->programListAction(0);
 
 		/*Get Premium Programs List*/
-		$premiumPrograms = new Object_Program_List();
-		$premiumPrograms->setCondition("ispremium = 1");
-		$premiumPrograms->load();
-		$this->view->premiumPrograms = $premiumPrograms->objects;
+		$this->view->premiumPrograms = $this->programListAction(1);
 
 		/*Get Trainers List*/
-		$trainers = new Object_Trainer_List();
-		$trainers->load();
-		$this->view->trainers = $trainers->objects;
+		$this->view->trainers = $this->trainersListAction();
+	}
+
+	public function programsAction () {
+		$this->enableLayout();
+		$programType = $this->_getParam('type');
+
+		$this->view->programs = $this->programListAction($programType);
+		
 	}
 
 	public function trainersAction () {
 		$this->enableLayout();
+		$this->view->trainers = $this->trainersListAction();
 	}
-        
-    public function headerAction() {
-        
-    }
+
+	public function trainerAction () {
+		$this->enableLayout();
+	}
     
     public function footerAction() {
         
