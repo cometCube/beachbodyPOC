@@ -63,6 +63,28 @@ class HomeController extends Action {
 		$programsList->load();
 		$this->view->programs = $programsList->objects;
 	}
+
+	public function programDetailsAction() {
+		$this->enableLayout();
+		/*$program = new Object_Program_List();
+		$program->setCondition("o_key = ?", $this->_getParam('key'));
+		$program->load();
+
+		$programDetails['program_details'] = $program->objects[0];
+
+		$workoutGroupList = new Object_Workoutgroup_List();
+		$workoutGroupList->setCondition("programID = ?", ",".$program->objects[0]->o_id.",");
+		$workoutGroupList->load();
+
+		$workoutGroups = $workoutGroupList->objects;
+		foreach ($workoutGroups as $key => $value) {
+			echo "<pre>";
+			echo "this is key";
+			print_r($key);
+			print_r($value);
+		}
+		die;*/
+	}
     
     public function footerAction() {
         

@@ -18,7 +18,7 @@ $programs = $this->programs;
 			?>
 			<div class="item-overlay premium">UNLOCK NOW</div>
 			<?php } ?>
-			<a href="/program/autumncalabreseexclusives"></a>
+			<a href="/program/<?= $value->getKey();?>"></a>
 				<div class="metadata-box">
 					<div class="metadata-cell">
 						<a href="javascript:void(0);" class="btn-close-rollover-data"></a>

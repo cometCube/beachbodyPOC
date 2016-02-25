@@ -104,7 +104,7 @@ window.bbLoaders[window.bbLoaders.length] = function() {
     ?>
         <li class="drawer-item has-hovered-data" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
         <img class="img-card-responsive inited" data-src="<?= $value->getPimage();?>" src="<?= $value->getPimage();?>">
-                <a href="http://club.teambeachbody.com/program/autumncalabreseexclusives"></a>
+                <a href="/program/<?= $value->getKey();?>"></a>
 
         <div class="metadata-box">
           <div class="metadata-cell">
@@ -159,7 +159,7 @@ window.bbLoaders[window.bbLoaders.length] = function() {
         <li class="drawer-item has-hovered-data" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
         <img class="img-card-responsive inited" data-src="<?= $value->getPimage();?>" src="<?= $value->getPimage();?>">
                   <div class="item-overlay premium">UNLOCK NOW</div>
-                <a href="http://club.teambeachbody.com/program/BodyBeast"></a>
+                <a href="/program/<?= $value->getKey();?>"></a>
 
         <div class="metadata-box">
           <div class="metadata-cell">
