@@ -24,4 +24,8 @@ class HomeController extends Action {
 		$trainers->load();
 		$this->view->trainers = $trainers->objects;
 	}
+
+	public function trainersAction () {
+		$this->enableLayout();
+	}
 }
