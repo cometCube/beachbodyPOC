@@ -6,7 +6,8 @@
             <ul class="desktop-nav">
                 <li class="mobile-btn"></li>
                 <li class="has-dropdown">
-                    <a href="http://club.teambeachbody.com/programs/" class="">Programs</a>
+                
+                    <a href="/programs" class="">Programs</a>
                     <ul class="dropdown">
                         <?php
                         $rootDoc = Document::getById(62);
