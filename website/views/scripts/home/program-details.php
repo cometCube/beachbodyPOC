@@ -1,4 +1,5 @@
 <?php
+$programDetails = $this->programDetails;
 ?>
 <div class="module-featured-line module-margin-bottom white-bg clearfix">
 
@@ -21,7 +22,7 @@
 
 					<div class="col-2">
 
-						<p class="title">10 WEEKS; 25 minutes a day</p>
+						<p class="title"><?= $programDetails['program_details']['time'];?></p>
 
 						<p class="sub-title">Each workout includes a modifier so anyone can succeed</p>
 
@@ -46,7 +47,7 @@
 
 					<div class="col-2">
 
-						<p class="title">Cardio / Slim &amp; Tone</p>
+						<p class="title"><?= $programDetails['program_details']['type'];?></p>
 
 						<p class="sub-title">Focus Interval Training works every muscle group in your body</p>
 
@@ -71,7 +72,7 @@
 
 					<div class="col-2">
 
-						<p class="title">Intermediate</p>
+						<p class="title"><?= $programDetails['program_details']['expert'];?></p>
 
 						<p class="sub-title">Basic fitness level okay. Exertion may increase over time.</p>
 
@@ -99,20 +100,24 @@
 
 </script>
 <script>var utag_data={"logged_in_status":"true","page_name":"Focus T25 product page","page_type":"Program","site_name":"bod","site_section":"bod-dom","page_group":"Unlock","page_subgroup":"","customer_id":"31E66C34-C960-4EE9-8AC8-3D1505A4A116","customer_email":"c707fd9b2e0b2bab3780cad2424403c500c665ec78c5829b7ba861b77b2bce81","unlock_type":"locked"};</script>
+<?php
+if($programDetails['program_details']['ispremium'] == 1) {
+?>
 <article class="module-program-unlock-options module-margin-bottom clearfix">
-
-		<div class="fixed-container">
-			<div class="module-program-wrapper">
-								<div class="message"><u>This is Pre</u>mium Program. Add Focus T25 to your member library for only $59.95 USD.  You will have unlimited streaming access to the program for as long as you’re a Beachbody on Demand member! Purchase not available for UK customers.</div><!----><div class="buttons">
-					<a class="button button-video button-trailer btn-play video-modal-btn" href="/video/T2514677B01?Focus+T25&amp;program=Focus+T25&amp;content_type=group-member" title="Focus T25" data-videoguid="T2514677B01" data-brandcode="T25" data-program="T25" data-title="Focus T25" data-description="No time to work out? Shaun Tâ��s going to get you an hourâ��s worth of results in just 25 minutes. With FOCUS T25Â®, thatâ��s all it takes to look better, feel better, change your life." data-duration="" data-preloadimg="" data-equipment="">SAMPLE WORKOUT</a>  						<a class="button button-unlock button-orange" href="https://club.teambeachbody.com/unlock/T25" title="Unlock Program">UNLOCK NOW</a>
-  						
-				</div>
-
+	<div class="fixed-container">
+		<div class="module-program-wrapper">
+			<div class="message">
+				<?= $programDetails['program_details']['desc'];?>
+			</div><!---->
+			<div class="buttons">
+				<a class="button button-video button-trailer btn-play video-modal-btn" href="/video/T2514677B01?Focus+T25&amp;program=Focus+T25&amp;content_type=group-member" title="Focus T25" data-videoguid="T2514677B01" data-brandcode="T25" data-program="T25" data-title="Focus T25" data-description="No time to work out? Shaun Tâ��s going to get you an hourâ��s worth of results in just 25 minutes. With FOCUS T25Â®, thatâ��s all it takes to look better, feel better, change your life." data-duration="" data-preloadimg="" data-equipment="">SAMPLE WORKOUT</a>  						<a class="button button-unlock button-orange" href="https://club.teambeachbody.com/unlock/T25" title="Unlock Program">UNLOCK NOW</a>
 			</div>
-
 		</div>
-
-	</article>
+	</div>
+</article>
+<?php 
+}
+?>
 <script>
 
 		
@@ -134,14 +139,16 @@
 		
 
 			<div class="accordion">
-			
+	<?php
+	foreach ($programDetails['workout-groups'] as $key => $value) {
+	?>		
 	<div class="item">
 
 		<p class="module-title head-label workout-unlock ">
 
 			<span class="arrow"></span>
 
-			Focus T25: Alpha		</p>
+			<?= $value['wg_name']; ?>		</p>
 
 
 		<span class="divider"></span>
@@ -165,7 +172,9 @@
 
 			</div>
 
-		
+			<?php
+			foreach ($value['workout'] as $k => $val) {
+			?>
 			<div class="track-row clearfix">
 
 				<div class="col-play">
@@ -175,7 +184,7 @@
 
 				<div class="col-content">
 
-					<div class="workout-name">Cardio</div>
+					<div class="workout-name"><?= $val['name'];?></div>
 
 					<div class="equipment">
 
@@ -185,18 +194,18 @@
 				
 					<div class="duration">
 
-						<span class="icon-clock"></span>25
+						<span class="icon-clock"></span><?= $val['time'];?>
 					</div>
 
 				</div>
 
-				<div class="hidden-description" style="">
+				<div class="hidden-description" style="display: block;">
 
 					<p>
 
 						<span class="label">Required Equipment</span>
 
-						<span class="important-text">None</span>
+						<span class="important-text"><?= $val['req_eqp'];?></span>
 
 					</p>
 
@@ -205,11 +214,11 @@
 						<span class="label">Recommended Equipment</span>
 
 						
-						<span class="important-text">None</span>
+						<span class="important-text"><?= $val['rec_eqp'];?></span>
 
 					</p>
 
-					<p><span class="label">Workout Description:</span>25 minutes of calorie-burning, sweat-drenching cardio.</p>
+					<p><span class="label">Workout Description:</span><?= $val['desc'];?></p>
 
 				
 					<a class="close-description" href="javascript:void( 0 );">SHOW LESS</a>
@@ -217,660 +226,44 @@
 				</div>
 
 			</div>
-
-		
-			<div class="track-row clearfix">
-
-				<div class="col-play">
-
-				
-				</div>
-
-				<div class="col-content">
-
-					<div class="workout-name">Speed 1.0</div>
-
-					<div class="equipment">
-
-					
-					</div>
-
-				
-					<div class="duration">
-
-						<span class="icon-clock"></span>25
-					</div>
-
-				</div>
-
-				<div class="hidden-description" style="">
-
-					<p>
-
-						<span class="label">Required Equipment</span>
-
-						<span class="important-text">None</span>
-
-					</p>
-
-					<p>
-
-						<span class="label">Recommended Equipment</span>
-
-						
-						<span class="important-text">None</span>
-
-					</p>
-
-					<p><span class="label">Workout Description:</span>Ignite your quickness. Burn the fat. Fast-paced for fast results.</p>
-
-				
-					<a class="close-description" href="javascript:void( 0 );">SHOW LESS</a>
-
-				</div>
-
-			</div>
-
-		
-			<div class="track-row clearfix">
-
-				<div class="col-play">
-
-				
-				</div>
-
-				<div class="col-content">
-
-					<div class="workout-name">Total Body Circuit</div>
-
-					<div class="equipment">
-
-					
-					</div>
-
-				
-					<div class="duration">
-
-						<span class="icon-clock"></span>25
-					</div>
-
-				</div>
-
-				<div class="hidden-description" style="">
-
-					<p>
-
-						<span class="label">Required Equipment</span>
-
-						<span class="important-text">None</span>
-
-					</p>
-
-					<p>
-
-						<span class="label">Recommended Equipment</span>
-
-						
-						<span class="important-text">None</span>
-
-					</p>
-
-					<p><span class="label">Workout Description:</span>Focus on strength and resistance—without lifting a single weight.</p>
-
-				
-					<a class="close-description" href="javascript:void( 0 );">SHOW LESS</a>
-
-				</div>
-
-			</div>
-
-		
-			<div class="track-row clearfix">
-
-				<div class="col-play">
-
-				
-				</div>
-
-				<div class="col-content">
-
-					<div class="workout-name">Ab Intervals</div>
-
-					<div class="equipment">
-
-					
-						<span class="marker-circle blue"></span>
-
-					
-					</div>
-
-				
-					<div class="duration">
-
-						<span class="icon-clock"></span>25
-					</div>
-
-				</div>
-
-				<div class="hidden-description" style="">
-
-					<p>
-
-						<span class="label">Required Equipment</span>
-
-						<span class="important-text">Core Comfort Mat</span>
-
-					</p>
-
-					<p>
-
-						<span class="label">Recommended Equipment</span>
-
-						
-						<span class="important-text">None</span>
-
-					</p>
-
-					<p><span class="label">Workout Description:</span>Cardio and ab intervals that shred the fat from your midsection.</p>
-
-				
-					<a class="close-description" href="javascript:void( 0 );">SHOW LESS</a>
-
-				</div>
-
-			</div>
-
-		
-			<div class="track-row clearfix">
-
-				<div class="col-play">
-
-				
-				</div>
-
-				<div class="col-content">
-
-					<div class="workout-name">Lower Focus</div>
-
-					<div class="equipment">
-
-					
-					</div>
-
-				
-					<div class="duration">
-
-						<span class="icon-clock"></span>25
-					</div>
-
-				</div>
-
-				<div class="hidden-description" style="">
-
-					<p>
-
-						<span class="label">Required Equipment</span>
-
-						<span class="important-text">None</span>
-
-					</p>
-
-					<p>
-
-						<span class="label">Recommended Equipment</span>
-
-						
-						<span class="important-text">None</span>
-
-					</p>
-
-					<p><span class="label">Workout Description:</span>Focus on your lower-body muscles—the key to burning fat and kicking up your metabolism.</p>
-
-				
-					<a class="close-description" href="javascript:void( 0 );">SHOW LESS</a>
-
-				</div>
-
-			</div>
-
-		
-			<div class="track-row clearfix">
-
-				<div class="col-play">
-
-				
-				</div>
-
-				<div class="col-content">
-
-					<div class="workout-name">Stretch</div>
-
-					<div class="equipment">
-
-					
-						<span class="marker-circle blue"></span>
-
-					
-					</div>
-
-				
-					<div class="duration">
-
-						<span class="icon-clock"></span>25
-					</div>
-
-				</div>
-
-				<div class="hidden-description" style="">
-
-					<p>
-
-						<span class="label">Required Equipment</span>
-
-						<span class="important-text">Core Comfort Mat</span>
-
-					</p>
-
-					<p>
-
-						<span class="label">Recommended Equipment</span>
-
-						
-						<span class="important-text">None</span>
-
-					</p>
-
-					<p><span class="label">Workout Description:</span>After 5 days of hard work, stretch it out—and enjoy this one! You deserve it.</p>
-
-				
-					<a class="close-description" href="javascript:void( 0 );">SHOW LESS</a>
-
-				</div>
-
-			</div>
-
-		
+			<?php
+			}
+			?>
 		</div>
 		</div>
-
-
-
-	
-	<div class="item">
-
-		<p class="module-title head-label workout-unlock ">
-
-			<span class="arrow"></span>
-
-			Focus T25: Beta		</p>
-
-
-		<span class="divider"></span>
-
-		<div class="content" style="display: block;">
-
-			<div class="track-row row-head clearfix">
-
-				<div class="col-play"></div>
-
-				<div class="col-content">
-
-					<div class="workout-name">WORKOUT NAME</div>
-
-					<div class="equipment">REQUIRED EQUIPMENT</div>
-
-					
-					<div class="duration">DURATION</div>
-
-				</div>
-
-			</div>
-
-		
-			<div class="track-row clearfix">
-
-				<div class="col-play">
-
-				
-				</div>
-
-				<div class="col-content">
-
-					<div class="workout-name">Core Cardio</div>
-
-					<div class="equipment">
-
-					
-						<span class="marker-circle blue"></span>
-
-					
-					</div>
-
-				
-					<div class="duration">
-
-						<span class="icon-clock"></span>25
-					</div>
-
-				</div>
-
-				<div class="hidden-description">
-
-					<p>
-
-						<span class="label">Required Equipment</span>
-
-						<span class="important-text">Core Comfort Mat</span>
-
-					</p>
-
-					<p>
-
-						<span class="label">Recommended Equipment</span>
-
-						
-						<span class="important-text">None</span>
-
-					</p>
-
-					<p><span class="label">Workout Description:</span>Get your sweat on! This progressive cardio-core workout is about you getting shredded fast.</p>
-
-				
-					<a class="close-description" href="javascript:void( 0 );">SHOW LESS</a>
-
-				</div>
-
-			</div>
-
-		
-			<div class="track-row clearfix">
-
-				<div class="col-play">
-
-				
-				</div>
-
-				<div class="col-content">
-
-					<div class="workout-name">Speed 2.0</div>
-
-					<div class="equipment">
-
-					
-					</div>
-
-				
-					<div class="duration">
-
-						<span class="icon-clock"></span>25
-					</div>
-
-				</div>
-
-				<div class="hidden-description">
-
-					<p>
-
-						<span class="label">Required Equipment</span>
-
-						<span class="important-text">None</span>
-
-					</p>
-
-					<p>
-
-						<span class="label">Recommended Equipment</span>
-
-						
-						<span class="important-text">None</span>
-
-					</p>
-
-					<p><span class="label">Workout Description:</span>Rev it up with Shaun's calorie-scorching, core-focused speed drills.</p>
-
-				
-					<a class="close-description" href="javascript:void( 0 );">SHOW LESS</a>
-
-				</div>
-
-			</div>
-
-		
-			<div class="track-row clearfix">
-
-				<div class="col-play">
-
-				
-				</div>
-
-				<div class="col-content">
-
-					<div class="workout-name">Rip't Circuit</div>
-
-					<div class="equipment">
-
-					
-						<span class="marker-circle blue"></span>
-
-					
-					</div>
-
-				
-					<div class="duration">
-
-						<span class="icon-clock"></span>25
-					</div>
-
-				</div>
-
-				<div class="hidden-description">
-
-					<p>
-
-						<span class="label">Required Equipment</span>
-
-						<span class="important-text">Core Comfort Mat, Dumbbells or Resistance Bands</span>
-
-					</p>
-
-					<p>
-
-						<span class="label">Recommended Equipment</span>
-
-						
-						<span class="important-text">None</span>
-
-					</p>
-
-					<p><span class="label">Workout Description:</span>Cardio … upper body … legs … abs ... repeat! This is how you get ripped in 25 minutes.</p>
-
-				
-					<a class="close-description" href="javascript:void( 0 );">SHOW LESS</a>
-
-				</div>
-
-			</div>
-
-		
-			<div class="track-row clearfix">
-
-				<div class="col-play">
-
-				
-				</div>
-
-				<div class="col-content">
-
-					<div class="workout-name">Dynamic Core</div>
-
-					<div class="equipment">
-
-					
-						<span class="marker-circle blue"></span>
-
-					
-					</div>
-
-				
-					<div class="duration">
-
-						<span class="icon-clock"></span>25
-					</div>
-
-				</div>
-
-				<div class="hidden-description">
-
-					<p>
-
-						<span class="label">Required Equipment</span>
-
-						<span class="important-text">Core Comfort Mat</span>
-
-					</p>
-
-					<p>
-
-						<span class="label">Recommended Equipment</span>
-
-						
-						<span class="important-text">None</span>
-
-					</p>
-
-					<p><span class="label">Workout Description:</span>You'll go from vertical to horizontal and back again in this dynamic, crazy core routine.</p>
-
-				
-					<a class="close-description" href="javascript:void( 0 );">SHOW LESS</a>
-
-				</div>
-
-			</div>
-
-		
-			<div class="track-row clearfix">
-
-				<div class="col-play">
-
-				
-				</div>
-
-				<div class="col-content">
-
-					<div class="workout-name">Upper Focus</div>
-
-					<div class="equipment">
-
-					
-						<span class="marker-circle blue"></span>
-
-					
-					</div>
-
-				
-					<div class="duration">
-
-						<span class="icon-clock"></span>25
-					</div>
-
-				</div>
-
-				<div class="hidden-description">
-
-					<p>
-
-						<span class="label">Required Equipment</span>
-
-						<span class="important-text">Dumbbells or Resistance Bands</span>
-
-					</p>
-
-					<p>
-
-						<span class="label">Recommended Equipment</span>
-
-						
-						<span class="important-text">None</span>
-
-					</p>
-
-					<p><span class="label">Workout Description:</span>Shaun will help you develop the upper body of your dreams. All you have to do is FOCUS.</p>
-
-				
-					<a class="close-description" href="javascript:void( 0 );">SHOW LESS</a>
-
-				</div>
-
-			</div>
-
-		
-			<div class="track-row clearfix">
-
-				<div class="col-play">
-
-				
-				</div>
-
-				<div class="col-content">
-
-					<div class="workout-name">Stretch</div>
-
-					<div class="equipment">
-
-					
-						<span class="marker-circle blue"></span>
-
-					
-					</div>
-
-				
-					<div class="duration">
-
-						<span class="icon-clock"></span>25
-					</div>
-
-				</div>
-
-				<div class="hidden-description">
-
-					<p>
-
-						<span class="label">Required Equipment</span>
-
-						<span class="important-text">Core Comfort Mat</span>
-
-					</p>
-
-					<p>
-
-						<span class="label">Recommended Equipment</span>
-
-						
-						<span class="important-text">None</span>
-
-					</p>
-
-					<p><span class="label">Workout Description:</span>After 5 days of hard work, stretch it out—and enjoy this one! You deserve it.</p>
-
-				
-					<a class="close-description" href="javascript:void( 0 );">SHOW LESS</a>
-
-				</div>
-
-			</div>
-
-		
-		</div>
-		</div>
-
-
-
-
+		<?php
+		}
+		?>
 	</div>
 
 <!-- </div> -->
+<style type="text/css">
+	.show {
+		display: block;
+	}
+	.hide {
+		display: none;
+	}
+</style>
+<script type="text/javascript">
+	$('.item').on('click', function(){
+		console.log('here');
+		console.log($(this).attr('class'););
+		$(this).children('.content').toggleClass('hide');
+	});
 
 
+
+	/*jQuery.noConflict();
+   jQuery('.accordian h3').on('click', function () {
+       jQuery(this).next('div').slideToggle(200);
+       jQuery(this).siblings().next('div').slideUp();
+
+       jQuery(this).toggleClass('tactive');
+
+       jQuery(this).siblings().removeClass('tactive');*/
+   });
+</script>
 
 <div class="module-disclaimer" data-version="bf3c5238d7ee186cfb600ef6c8e67a4e">
 

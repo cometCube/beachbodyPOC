@@ -66,24 +66,43 @@ class HomeController extends Action {
 
 	public function programDetailsAction() {
 		$this->enableLayout();
-		/*$program = new Object_Program_List();
+		$program = new Object_Program_List();
 		$program->setCondition("o_key = ?", $this->_getParam('key'));
 		$program->load();
 
-		$programDetails['program_details'] = $program->objects[0];
+		$details = $program->objects[0];
+
+		$progrmDetails['program_details']['time'] = $details->getFtimelabel();
+		$progrmDetails['program_details']['type'] = $details->getPtype();
+		$progrmDetails['program_details']['expert'] = $details->getFexpertlevel();
+		$progrmDetails['program_details']['desc'] = $details->getPdesc();
+		$progrmDetails['program_details']['ispremium'] = $details->getIspremium();
 
 		$workoutGroupList = new Object_Workoutgroup_List();
-		$workoutGroupList->setCondition("programID = ?", ",".$program->objects[0]->o_id.",");
+		$workoutGroupList->setCondition("programID = ?", ",".$details->o_id.",");
 		$workoutGroupList->load();
 
 		$workoutGroups = $workoutGroupList->objects;
 		foreach ($workoutGroups as $key => $value) {
-			echo "<pre>";
-			echo "this is key";
-			print_r($key);
-			print_r($value);
+			$progrmDetails['workout-groups'][$key]['wg_id'] = $value->o_id;
+			$progrmDetails['workout-groups'][$key]['wg_name'] = $value->getWgname();
+
+			$workoutList = new Object_Workout_List();
+			$workoutList->setCondition("workoutgroupID = ?", ",".$value->o_id.",");
+			$workoutList->load();
+
+			$workouts = $workoutList->objects;
+			foreach ($workouts as $k => $val) {
+				$progrmDetails['workout-groups'][$key]['workout'][$k]['name'] = $val->getWname();
+				$progrmDetails['workout-groups'][$key]['workout'][$k]['desc'] = $val->getWdesc();
+				$progrmDetails['workout-groups'][$key]['workout'][$k]['req_eqp'] = $val->getReqequipment();
+				$progrmDetails['workout-groups'][$key]['workout'][$k]['rec_eqp'] = $val->getRecequipment();
+				$progrmDetails['workout-groups'][$key]['workout'][$k]['time'] = $val->getWtime();
+				$progrmDetails['workout-groups'][$key]['workout'][$k]['active'] = $val->getWactive();
+			}
 		}
-		die;*/
+		
+		$this->view->programDetails = $progrmDetails;
 	}
     
     public function footerAction() {
