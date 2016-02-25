@@ -8,12 +8,39 @@
                 <li class="has-dropdown">
                     <a href="http://club.teambeachbody.com/programs/" class="">Programs</a>
                     <ul class="dropdown">
-                        <li><a href="http://club.teambeachbody.com/programs/">Member Library</a></li>
-                        <li><a href="http://club.teambeachbody.com/premium-content/">Premium Content</a></li>
-                        <li><a href="http://club.teambeachbody.com/trainers/">By Trainer</a></li>
-                        <li><a href="http://club.teambeachbody.com/types/">By Type</a></li>
-                        <li><a href="http://club.teambeachbody.com/program/challenge-du-jour/">Challenge Du Jour</a></li>
-                        <li><a href="http://club.teambeachbody.com/program/master-trainers">The Master Trainers</a></li>
+                        <?php
+                        $rootDoc = Document::getById(62);
+                        $childDocs = $rootDoc->getChilds();
+                        if (count($childDocs) > 0) {
+                            foreach ($childDocs as $doc) {
+                                if (!$doc->getPublished())
+                                    continue;
+                                if ($doc->getType() != "page" && $doc->getType() != "link")
+                                    continue;
+
+                                if ($doc->getType() == "page") {
+                                    if (Site::isSiteRequest()) {
+                                        $loc = $doc->getFullPath();
+                                    } else {
+                                        $loc = $doc->getRealFullpath();
+                                    }
+                                } elseif ($doc->getType() == "link") {
+                                    $loc = $doc->getLink();
+                                }
+                                ?>
+                                <li><a class="bordy" href="<?= $loc ?>">
+                                <?= $doc->getName() ?>
+                                    </a></li>
+                                <?php
+                            }
+                        }
+                        ?>	
+                        <!--                        <li><a href="http://club.teambeachbody.com/programs/">Member Library</a></li>
+                                                <li><a href="http://club.teambeachbody.com/premium-content/">Premium Content</a></li>
+                                                <li><a href="http://club.teambeachbody.com/trainers/">By Trainer</a></li>
+                                                <li><a href="http://club.teambeachbody.com/types/">By Type</a></li>
+                                                <li><a href="http://club.teambeachbody.com/program/challenge-du-jour/">Challenge Du Jour</a></li>
+                                                <li><a href="http://club.teambeachbody.com/program/master-trainers">The Master Trainers</a></li>-->
                     </ul>
                 </li>
                 <li class="">
