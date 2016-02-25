@@ -24,4 +24,13 @@ class HomeController extends Action {
 		$trainers->load();
 		$this->view->trainers = $trainers->objects;
 	}
+        
+        public function headerAction() {
+        
+        }
+
+        public function footerAction() {
+        
+        }
+
 }
