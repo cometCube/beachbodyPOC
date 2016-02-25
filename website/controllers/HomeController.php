@@ -28,4 +28,12 @@ class HomeController extends Action {
 	public function trainersAction () {
 		$this->enableLayout();
 	}
+        
+    public function headerAction() {
+        
+    }
+    
+    public function footerAction() {
+        
+    }
 }
