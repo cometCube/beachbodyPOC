@@ -1,6 +1,24 @@
 <?php
 $programDetails = $this->programDetails;
 ?>
+<style type="text/css">
+	.hide{
+		display: none;
+	}
+	.show {
+		display: block;
+	}
+
+</style> 
+</head>
+<script type="text/javascript">
+	function showWorkouts(elem) {
+		$(elem).parent().find('.content').toggle();
+	}
+	function showWorkOutDesc(element) {
+		$(element).next('.hidden-description').toggle();
+	}
+</script>
 <div class="module-featured-line module-margin-bottom white-bg clearfix">
 
 	<div class="fixed-container">
@@ -138,13 +156,13 @@ if($programDetails['program_details']['ispremium'] == 1) {
 		
 		
 
-			<div class="accordion">
+			<div class="accordion" >
 	<?php
 	foreach ($programDetails['workout-groups'] as $key => $value) {
 	?>		
-	<div class="item">
+	<div class="item"  >
 
-		<p class="module-title head-label workout-unlock ">
+		<p class="module-title head-label workout-unlock " onclick="showWorkouts(this)">
 
 			<span class="arrow"></span>
 
@@ -153,7 +171,7 @@ if($programDetails['program_details']['ispremium'] == 1) {
 
 		<span class="divider"></span>
 
-		<div class="content" style="display: block;">
+		<div class="content" >
 
 			<div class="track-row row-head clearfix">
 
@@ -182,7 +200,7 @@ if($programDetails['program_details']['ispremium'] == 1) {
 				
 				</div>
 
-				<div class="col-content">
+				<div class="col-content"  onclick="showWorkOutDesc(this)">
 
 					<div class="workout-name"><?= $val['name'];?></div>
 
@@ -199,7 +217,7 @@ if($programDetails['program_details']['ispremium'] == 1) {
 
 				</div>
 
-				<div class="hidden-description" style="display: block;">
+				<div class="hidden-description">
 
 					<p>
 
@@ -235,8 +253,6 @@ if($programDetails['program_details']['ispremium'] == 1) {
 		}
 		?>
 	</div>
-
-<!-- </div> -->
 
 <div class="module-disclaimer" data-version="bf3c5238d7ee186cfb600ef6c8e67a4e">
 
