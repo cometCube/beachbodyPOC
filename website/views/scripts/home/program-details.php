@@ -237,33 +237,6 @@ if($programDetails['program_details']['ispremium'] == 1) {
 	</div>
 
 <!-- </div> -->
-<style type="text/css">
-	.show {
-		display: block;
-	}
-	.hide {
-		display: none;
-	}
-</style>
-<script type="text/javascript">
-	$('.item').on('click', function(){
-		console.log('here');
-		console.log($(this).attr('class'););
-		$(this).children('.content').toggleClass('hide');
-	});
-
-
-
-	/*jQuery.noConflict();
-   jQuery('.accordian h3').on('click', function () {
-       jQuery(this).next('div').slideToggle(200);
-       jQuery(this).siblings().next('div').slideUp();
-
-       jQuery(this).toggleClass('tactive');
-
-       jQuery(this).siblings().removeClass('tactive');*/
-   });
-</script>
 
 <div class="module-disclaimer" data-version="bf3c5238d7ee186cfb600ef6c8e67a4e">
 
