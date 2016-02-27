@@ -121,7 +121,7 @@ window.bbLoaders[window.bbLoaders.length] = function() {
         </div>
 
       </li>
-    <?
+    <?php
     }
     ?>
         </ul></div><div class="bx-controls bx-has-controls-direction"><div class="bx-controls-direction"><a class="bx-prev disabled" href="">Prev</a><a class="bx-next" href="">Next</a></div></div></div>
@@ -153,7 +153,7 @@ window.bbLoaders[window.bbLoaders.length] = function() {
   <div class="slider-box loaded">
     <div class="bx-wrapper" style="max-width: 1170px; margin: 0px auto;">
     <div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative; height: 336px;"><ul class="bxslider drawer-slider slider-cards" id="premium_programs" style="width: 1115%; position: relative; transition-duration: 0s; transform: translate3d(-40px, 0px, 0px);">
-    <?
+    <?php
     foreach ($premiumPrograms as $key => $value) {
     ?>
         <li class="drawer-item has-hovered-data" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">

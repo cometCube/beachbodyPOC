@@ -12,7 +12,7 @@ $programs = $this->programs;
 	foreach ($programs as $key => $value) {
 	?>
 		<li class="item has-hovered-data">
-			<?
+			<?php
 			$isPremium = $value->getIspremium();
 			if($isPremium == 1) {
 			?>
