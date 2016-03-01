@@ -149,8 +149,10 @@ window.bbLoaders[window.bbLoaders.length] = function() {
     });
 
     $('.hero-carousel').bxSlider({
+      mode: 'fade',
       controls: false,
-      speed: 500,
+      speed: 3000,
+      pause: 7000,
       pager: true,
       auto: true,
       infiniteLoop: true

@@ -1,6 +1,6 @@
 
 
-    <ul class="hero-slider hero-carousel"><!-- style="width: auto; position: relative;"-->
+    <ul class="hero-slider hero-carousel" style="padding-left: 0px !important;"><!-- style="width: auto; position: relative;"-->
         <?php while($this->block("content")->loop()) { ?>
         <li class="slide">
           <?= $this->image("myImage", [
