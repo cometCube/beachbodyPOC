@@ -87,7 +87,140 @@
   })();
 </script>
 <?= $this->inc('/shared/header'); ?>
+
+<div class="hero-wrapper module-margin-bottom">
+  <div class="module-hero module-margin-bottom clearfix">
+  <?= $this->snippet("teaser", ["width" => 1200, "height" => 475]); ?>
+  </div>
+</div>
+
+
+<div class="welcome-box" data-is-login="1" style="display: none;">
+
+    <div class="welcome-message">
+
+        <div class="container welcome-wrapper clearfix">
+
+            <img class="logo" src="/website/static/bb-logo.png" alt="Logo">
+
+            <span class="text"><strong class="semi-bold">Welcome Back, Vivek Test!</strong> Time to get back into ActiveMaternity where you left off!</span>
+
+            <div class="container-btn-back">
+
+                <a class="btn-back" href="http://club.teambeachbody.com/program/activematernity">GET BACK TO PROGRAM</a>
+
+            </div>
+
+        </div>
+
+        <a class="btn-close" href="javascript: void( 0 );"></a>
+
+    </div>
+
+    <div class="toggle-message-box">
+
+        <div class="container">
+
+            <a class="btn-welcome-open" href="javascript: void( 0 );"></a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+    document.querySelector('.welcome-box .btn-close').addEventListener('click', function (event) {
+
+        event.preventDefault();
+
+        document.querySelector('.welcome-box').style.display = 'none';
+    })
+
+</script>
+<script>
+            (function () {
+
+                var response;
+
+                /*response = [{
+                 "title": "Announcement Copy Three",
+                 "announcement_copy": "Because Beachbody Performance is taking the supplement industry...and turning it on its head. Because Beachbody Performance is taking the supplement industry...and turning it on its head. " +
+                 "<a href='www.teambeachbody.com'>#TeamBeachBody</a>",
+                 "announcement_icon": "http://imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1427921397/BNA-TimR-BEFORE_pk1abi.png",
+                 "publish_date_start": "2016-01-13",
+                 "publish_date_end": "2016-01-26"
+                 }];*/
+
+                function handleResponse(response) {
+                    var response = response,
+                            $banner = $('.module-banner-announcement'),
+                            $announcementContainer = $banner.find('.announcement-container'),
+                            $toggle = $banner.find('.announcement-toggle')
+                            ;
+
+                    $banner.find('.announcement-toggle').on('click', function () {
+                        if ($banner.find('.announcement-container').hasClass('active')) {
+                            $announcementContainer.removeClass('active');
+                            $announcementContainer.addClass('hidden');
+                            $announcementContainer.fadeOut();
+                            $toggle.attr('src', '/wp-content/themes/ripple/img/header/down-arrow.png');
+                        } else {
+                            $announcementContainer.fadeIn();
+                            $announcementContainer.removeClass('hidden');
+                            $announcementContainer.addClass('active');
+                            $toggle.attr('src', '/wp-content/themes/ripple/img/header/up-arrow.png');
+                        }
+                    });
+
+                    $banner.fadeIn();
+                    $banner.find('.announcement-text').html($('<span>' + response.announcement_copy + '</span>'));
+                    $banner.find('.announcement-icon img').attr('src', response.announcement_icon);
+                    /*$banner.find('.announcement-title').text(response.title);*/
+                }
+
+                setTimeout(function () {
+                    $.when(bb.WebAPIUtils.getAnnouncement('content/announcement', null, function () {
+                        $('.module-banner-announcement').hide();
+                    })).done(function (response) {
+                        if (response[0].title) {
+                            $('.module-banner-announcement').show();
+                            handleResponse(response[0]);
+                        } else if (response[0] && response[0][0]) {
+                            $('.module-banner-announcement').show();
+                            handleResponse(response[0][0]);
+                        } else {
+                            $('.module-banner-announcement').hide();
+                        }
+                    });
+                }, 3000);
+
+            })();
+</script>
+
+
+<div class="module-banner white-bg clearfix" style="background:#f0f0f0">
+    <div class="fixed-container"></div>
+</div>
+<div class="module-banner module-banner-announcement module-margin-bottom clearfix" style="display: none;">
+    <div class="fixed-container">
+        <div class="announcement-container active">
+            <div class="announcement-icon"> <img src="/website/static/announcement.png"></div><!--
+            --><div class="announcement-container">
+                <div class="announcement-title"></div>
+                <div class="announcement-text"></div>
+                <div></div>
+            </div>
+        </div>
+        <div class="toggle">
+            <img class="announcement-toggle" src="/website/static/up-arrow.png">
+        </div>
+    </div>
+</div>
+
 <?= $this->layout()->content; ?>
 <?= $this->inc('/shared/footer'); ?>
 
-</body></html>
+</body>
+</html>

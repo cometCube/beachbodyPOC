@@ -54,8 +54,16 @@ class HomeController extends Action {
 
 	public function trainerProgramsAction () {
 		$this->enableLayout();
+
+		if($this->editmode) {
+			$defaultTrainer = $this->trainersListAction();
+			$defaultTrainerKey = $defaultTrainer[0]->o_key;
+		} else {
+			$defaultTrainerKey = $this->_getParam('key');
+		}
+		
 		$trainers = new Object_Trainer_List();
-		$trainers->setCondition("o_key = ?", $this->_getParam('key'));
+		$trainers->setCondition("o_key = ?", $defaultTrainerKey);
 		$trainers->load();
 		
 		$programsList = new Object_Program_List();
@@ -66,8 +74,14 @@ class HomeController extends Action {
 
 	public function programDetailsAction() {
 		$this->enableLayout();
+		if($this->editmode) {
+			$defaultProgram = $this->programListAction(0);
+			$defaultProgramKey = $defaultProgram[0]->o_key;
+		} else {
+			$defaultProgramKey = $this->_getParam('key');
+		}
 		$program = new Object_Program_List();
-		$program->setCondition("o_key = ?", $this->_getParam('key'));
+		$program->setCondition("o_key = ?", $defaultProgramKey);
 		$program->load();
 
 		$details = $program->objects[0];
@@ -106,6 +120,10 @@ class HomeController extends Action {
 	}
     
     public function footerAction() {
+        
+    }
+
+    public function teaserAction() {
         
     }
 }

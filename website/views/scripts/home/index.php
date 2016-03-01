@@ -3,24 +3,8 @@ $normalPrograms = $this->normalPrograms;
 $premiumPrograms = $this->premiumPrograms;
 $trainers = $this->trainers;
 ?>
-<div class="module-banner white-bg clearfix" style="background:#f0f0f0">
-    <div class="fixed-container"></div>
-</div>
-<div class="module-banner module-banner-announcement module-margin-bottom clearfix" style="display: none;">
-    <div class="fixed-container">
-        <div class="announcement-container active">
-            <div class="announcement-icon"> <img src="/website/static/announcement.png"></div><!--
-            --><div class="announcement-container">
-                <div class="announcement-title"></div>
-                <div class="announcement-text"></div>
-                <div></div>
-            </div>
-        </div>
-        <div class="toggle">
-            <img class="announcement-toggle" src="/website/static/up-arrow.png">
-        </div>
-    </div>
-</div><div class="container module-drawer clearfix widget-cdj-aud">
+
+<div class="container module-drawer clearfix widget-cdj-aud">
     <div id="bod-activity"></div>
     <div class="half-container-left module-drawer module-margin-bottom clearfix">
        <a href="http://club.teambeachbody.com/program/challenge-du-jour" class="module-title">Challenge Du Jour</a>
@@ -96,13 +80,13 @@ window.bbLoaders[window.bbLoaders.length] = function() {
   </a>
 
   <div class="slider-box loaded">
-    <div class="bx-wrapper" style="max-width: 1170px; margin: 0px auto;">
-    <div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative; height: 336px;">
-    <ul class="bxslider drawer-slider slider-cards" id="all_programs" style="width: 3315%; position: relative; transition-duration: 0s; transform: translate3d(-40px, 0px, 0px);">
+    <!-- <div class="bx-wrapper" style="max-width: 1170px; margin: 0px auto;"> -->
+    <!-- <div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative; height: 336px;"> -->
+    <ul id="normal-programs" class="bxslider drawer-slider slider-cards" ><!-- style="width: 3315%; position: relative; transition-duration: 0s; transform: translate3d(-40px, 0px, 0px);"-->
     <?php
       foreach ($normalPrograms as $key => $value) {
     ?>
-        <li class="drawer-item has-hovered-data" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
+        <li class="drawer-item has-hovered-data" ><!-- style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;"-->
         <img class="img-card-responsive inited" data-src="<?= $value->getPimage();?>" src="<?= $value->getPimage();?>">
                 <a href="/program/<?= $value->getKey();?>"></a>
 
@@ -124,7 +108,15 @@ window.bbLoaders[window.bbLoaders.length] = function() {
     <?php
     }
     ?>
-        </ul></div><div class="bx-controls bx-has-controls-direction"><div class="bx-controls-direction"><a class="bx-prev disabled" href="">Prev</a><a class="bx-next" href="">Next</a></div></div></div>
+        </ul>
+        <!-- </div> -->
+        <!-- <div class="bx-controls bx-has-controls-direction">
+          <div class="bx-controls-direction">
+            <a class="bx-prev disabled" href="">Prev</a>
+            <a class="bx-next" href="">Next</a>
+          </div>
+        </div> -->
+      <!-- </div> -->
   </div>
 </div>
 
@@ -151,12 +143,13 @@ window.bbLoaders[window.bbLoaders.length] = function() {
   </a>
 
   <div class="slider-box loaded">
-    <div class="bx-wrapper" style="max-width: 1170px; margin: 0px auto;">
-    <div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative; height: 336px;"><ul class="bxslider drawer-slider slider-cards" id="premium_programs" style="width: 1115%; position: relative; transition-duration: 0s; transform: translate3d(-40px, 0px, 0px);">
+    <!-- <div class="bx-wrapper" style="max-width: 1170px; margin: 0px auto;"> -->
+    <!-- <div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative; height: 336px;"> -->
+    <ul id="premium-programs" class="bxslider drawer-slider slider-cards" ><!--style="width: 1115%; position: relative; transition-duration: 0s; transform: translate3d(-40px, 0px, 0px);" -->
     <?php
     foreach ($premiumPrograms as $key => $value) {
     ?>
-        <li class="drawer-item has-hovered-data" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
+        <li class="drawer-item has-hovered-data"><!-- style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;"-->
         <img class="img-card-responsive inited" data-src="<?= $value->getPimage();?>" src="<?= $value->getPimage();?>">
                   <div class="item-overlay premium">UNLOCK NOW</div>
                 <a href="/program/<?= $value->getKey();?>"></a>
@@ -179,7 +172,15 @@ window.bbLoaders[window.bbLoaders.length] = function() {
     <?php
     }
     ?>
-        </ul></div><div class="bx-controls bx-has-controls-direction"><div class="bx-controls-direction"><a class="bx-prev disabled" href="">Prev</a><a class="bx-next" href="">Next</a></div></div></div>
+        </ul>
+        <!-- </div> -->
+        <!-- <div class="bx-controls bx-has-controls-direction">
+          <div class="bx-controls-direction">
+            <a class="bx-prev disabled" href="">Prev</a>
+            <a class="bx-next" href="">Next</a>
+          </div>
+        </div> -->
+      <!-- </div> -->
   </div>
 </div>
 
@@ -194,7 +195,7 @@ window.bbLoaders[window.bbLoaders.length] = function() {
 
 <div class="container module-drawer module-margin-bottom clearfix">
 
-  <a href="http://club.teambeachbody.com/types" class="module-title">By Type</a>
+  <a href="#" class="module-title">By Type</a>
     <!-- a class="question-tooltip" href="javascript:void(0);">
         <span class="icon-question"></span>
         <span class="popover">
@@ -204,44 +205,54 @@ window.bbLoaders[window.bbLoaders.length] = function() {
         </span>
     </a -->
 <div class="slider-box loaded">
-  <div class="bx-wrapper" style="max-width: 1170px; margin: 0px auto;"><div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative; height: 167px;"><ul class="bxslider drawer-type-b-slider" id="programType" style="width: 815%; position: relative; transition-duration: 0s; transform: translate3d(-40px, 0px, 0px);">
+  <!-- <div class="bx-wrapper" style="max-width: 1170px; margin: 0px auto;"> -->
+  <!-- <div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative; height: 167px;"> -->
+    <ul class="bxslider drawer-type-b-slider" id="programType" style="width: 815%; position: relative; transition-duration: 0s; transform: translate3d(-40px, 0px, 0px);">
     <li class="drawer-item" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-      <a href="http://club.teambeachbody.com/types/cardio/">
+      <a href="#">
         <div class="icon-box"><span class="icon-type" style=" background-image: url(http://imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1455039945/Icons/redesign/icon-cardio.png);"></span></div>
         <div class="text-box"><span>Cardio</span></div>
       </a>
     </li>
     <li class="drawer-item" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-      <a href="http://club.teambeachbody.com/types/muscle-building/">
+      <a href="#">
         <div class="icon-box"><span class="icon-type" style=" background-image: url(http://imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1455039945/Icons/redesign/icon-musclebuilding.png);"></span></div>
         <div class="text-box"><span>Muscle Building</span></div>
       </a>
     </li>
     <li class="drawer-item" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-      <a href="http://club.teambeachbody.com/types/less-than-30-min/">
+      <a href="#">
         <div class="icon-box"><span class="icon-type" style=" background-image: url(http://imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1455039945/Icons/redesign/icon-30mins.png);"></span></div>
         <div class="text-box"><span>Less than 30 min.</span></div>
       </a>
     </li>
     <li class="drawer-item" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-      <a href="http://club.teambeachbody.com/types/slim-tone/">
+      <a href="#">
         <div class="icon-box"><span class="icon-type" style=" background-image: url(http://imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1455039945/Icons/redesign/icon-slim_tone.png);"></span></div>
         <div class="text-box"><span>Slim &amp; Tone</span></div>
       </a>
     </li>
     <li class="drawer-item" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-      <a href="http://club.teambeachbody.com/types/dance/">
+      <a href="#">
         <div class="icon-box"><span class="icon-type" style=" background-image: url(http://imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1455039945/Icons/redesign/icon-dance.png);"></span></div>
         <div class="text-box"><span>Dance</span></div>
       </a>
     </li>
     <li class="drawer-item" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
-      <a href="http://club.teambeachbody.com/types/low-impact-3/">
+      <a href="#">
         <div class="icon-box"><span class="icon-type" style=" background-image: url(http://imgclub.teambeachbody.com/club-teambeachbody/image/upload/v1455039945/Icons/redesign/icon-lowimpact.png);"></span></div>
         <div class="text-box"><span>Low Impact</span></div>
       </a>
     </li>
-  </ul></div><div class="bx-controls bx-has-controls-direction"><div class="bx-controls-direction"><a class="bx-prev disabled" href="">Prev</a><a class="bx-next" href="">Next</a></div></div></div>
+  </ul>
+  <!-- </div> -->
+  <!-- <div class="bx-controls bx-has-controls-direction">
+  <div class="bx-controls-direction">
+  <a class="bx-prev disabled" href="">Prev</a>
+  <a class="bx-next" href="">Next</a>
+  </div>
+  </div> -->
+  <!-- </div> -->
   </div>
 </div>
 
@@ -264,14 +275,14 @@ window.bbLoaders[window.bbLoaders.length] = function() {
         </span>
     </a -->
 <div class="slider-box loaded">
-  <div class="bx-wrapper" style="max-width: 1170px; margin: 0px auto;">
-  <div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative; height: 336px;">
-  <ul class="bxslider drawer-slider" id="trainers" style="width: 1515%; position: relative; transition-duration: 0s; transform: translate3d(-40px, 0px, 0px);">
+  <!-- <div class="bx-wrapper" style="max-width: 1170px; margin: 0px auto;"> -->
+  <!-- <div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative; height: 336px;"> -->
+  <ul id="trainers" class="bxslider drawer-slider"><!-- style="width: 1515%; position: relative; transition-duration: 0s; transform: translate3d(-40px, 0px, 0px);"-->
   <?php
   foreach ($trainers as $key => $value) {
     $trainerName = explode(' ', $value->getTname());
   ?>
-    <li class="drawer-item" style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;">
+    <li class="drawer-item"><!-- style="float: left; list-style: none; position: relative; width: 270px; margin-right: 30px;"-->
       <a href="/trainer/<?= $value->getKey();?>">
         <img class="img-card-responsive png-jpg inited" data-src="<?= $value->getTimgage();?>" src="<?= $value->getTimgage();?>">
         <div class="people-name">
@@ -286,16 +297,20 @@ window.bbLoaders[window.bbLoaders.length] = function() {
   <?php
   }
   ?>
-  </ul></div><div class="bx-controls bx-has-controls-direction"><div class="bx-controls-direction"><a class="bx-prev" href="">Prev</a><a class="bx-next" href="">Next</a></div></div></div>
+  </ul>
+  <!-- </div> -->
+  <!-- <div class="bx-controls bx-has-controls-direction">
+    <div class="bx-controls-direction">
+      <a class="bx-prev" href="">Prev</a>
+      <a class="bx-next" href="">Next</a>
+    </div>
+  </div> -->
+  <!-- </div> -->
  </div>
 </div>
 
-<script type="text/javascript">
-window.bbLoaders[window.bbLoaders.length] = function() {
-  var slideIdentifier = $('#trainers');
-  bb.drawerSlider(slideIdentifier);
-};
-</script>
+
+
 <div class="module-promo white-bg clearfix">
   <div class="container">
     <div class="row clearfix">

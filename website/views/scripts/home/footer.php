@@ -89,6 +89,77 @@
 </div>
 
 <script type="text/javascript">
+window.bbLoaders[window.bbLoaders.length] = function() {
+  var slideIdentifier = $('#trainers');
+  bb.drawerSlider(slideIdentifier);
+};
+</script>
+
+<script type="text/javascript" src="http://bxslider.com/js/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.5/jquery.bxslider.js"></script>
+<!-- <link href="http://bxslider.com/lib/jquery.bxslider.css" rel="stylesheet" /> -->
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#normal-programs').bxSlider({
+      minSlides: 3,
+      maxSlides: 4,
+      moveSlides: 4,
+      slideWidth: 270,
+      slideMargin: 30,
+      auto: false,
+      infiniteLoop: false,
+      hideControlOnEnd: true,
+      pager: false
+    });
+
+    $('#premium-programs').bxSlider({
+      minSlides: 3,
+      maxSlides: 4,
+      moveSlides: 4,
+      slideWidth: 270,
+      slideMargin: 30,
+      auto: false,
+      infiniteLoop: false,
+      hideControlOnEnd: true,
+      pager: false
+    });
+
+    $('#trainers').bxSlider({
+      minSlides: 3,
+      maxSlides: 4,
+      moveSlides: 4,
+      slideWidth: 270,
+      slideMargin: 30,
+      auto: false,
+      infiniteLoop: false,
+      hideControlOnEnd: true,
+      pager: false
+    });
+
+    $('#programType').bxSlider({
+      minSlides: 3,
+      maxSlides: 4,
+      moveSlides: 4,
+      slideWidth: 270,
+      slideMargin: 30,
+      auto: false,
+      infiniteLoop: false,
+      hideControlOnEnd: true,
+      pager: false
+    });
+
+    $('.hero-carousel').bxSlider({
+      controls: false,
+      speed: 500,
+      pager: true,
+      auto: true,
+      infiniteLoop: true
+    });
+
+  });
+</script>
+
+<script type="text/javascript">
     function getjs(u, cb) {
         var d = document,
                 s = 'script',
