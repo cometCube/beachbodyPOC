@@ -126,4 +126,8 @@ class HomeController extends Action {
     public function teaserAction() {
         
     }
+
+    public function redirectAction() {
+        
+    }
 }

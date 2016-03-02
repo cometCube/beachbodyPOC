@@ -17,7 +17,7 @@
     <loginscreencustomimage/>
     <disableusagestatistics/>
     <debug>1</debug>
-    <debug_ip/>
+    <debug_ip>127.0.0.1</debug_ip>
     <http_auth>
       <username/>
       <password/>
@@ -51,7 +51,7 @@
     <default_controller>default</default_controller>
     <default_action>default</default_action>
     <error_pages>
-      <default>/</default>
+      <default>/404</default>
     </error_pages>
     <createredirectwhenmoved/>
     <allowtrailingslash>no</allowtrailingslash>
