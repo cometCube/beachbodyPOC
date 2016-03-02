@@ -1,7 +1,7 @@
 <div class="exposeMask"></div><div class="module-header clearfix">
     <div class="container">
         <div class="nav-container">
-            <a href="/website/static/Beachbody On Demand _ homepage.html"><div class="logo"></div></a>
+            <a href="/"><div class="logo"></div></a>
 
             <ul class="desktop-nav">
                 <li class="mobile-btn"></li>
