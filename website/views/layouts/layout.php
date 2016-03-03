@@ -93,6 +93,16 @@
   <?= $this->snippet("teaser", ["width" => 1200, "height" => 475]); ?>
   </div>
 </div>
+<?php
+if($this->editmode) {
+?>
+  <style type="text/css">
+    .hero-slider li:not(:first-child) {
+      display: none;
+    }
+  </style>
+<?php } ?>
+
 
 
 <div class="welcome-box" data-is-login="1" style="display: none;">
